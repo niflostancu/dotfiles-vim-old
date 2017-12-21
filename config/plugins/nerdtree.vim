@@ -20,6 +20,16 @@ function plug.nerdtree.hook_post_source() dict
 				\ ]
 
 	autocmd UserAuto FileType nerdtree call s:nerdtree_settings()
+endfunction
+
+function plug.nerdtree.hook_add() dict
+	" Key bindings
+	Shortcut (NERDTree) Toggle
+		\ noremap <silent> <F3> :NERDTreeToggle<CR>
+	Shortcut (NERDTree) Toggle (alt)
+	  \ noremap <silent> [denite]e :NERDTreeToggle<CR>
+	Shortcut (NERDTree) Find current file
+		\ noremap <silent> [denite]a :NERDTreeFind<CR>
 
 endfunction
 
