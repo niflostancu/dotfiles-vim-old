@@ -3,9 +3,9 @@ let plug = g:user_plugins
 
 let plug.nerdtree = {'from': "scrooloose/nerdtree", "on_map": {"n": "<Plug>"}, 
 			\ "on_cmd": "NERDTree"}
-function plug.nerdtree.hook_post_source() dict
+function plug.nerdtree.hook_source() dict
 	let g:NERDTreeMinimalUI = 1
-	let g:NERDTreeWinSize = 25
+	let g:NERDTreeWinSize = 31
 	let g:NERDTreeCascadeOpenSingleChildDir = 1
 	let g:NERDTreeCascadeSingleChildDir = 0
 	let g:NERDTreeShowHidden = 0
@@ -35,7 +35,6 @@ endfunction
 
 function! s:nerdtree_settings() abort
 	setlocal expandtab " Enable vim-indent-guides
-	vertical resize 25
 endfunction
 
 let plug.nerdtree_git = {'from': "Xuyuanp/nerdtree-git-plugin", "on_source": "nerdtree"}

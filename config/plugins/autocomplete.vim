@@ -8,7 +8,8 @@ let plug.context_filetype = {'from': "Shougo/context_filetype.vim", "lazy": 1}
 let plug.deoplete = {'from': "Shougo/deoplete.nvim", "depends": "context_filetype.vim",
 		\ "hook_add": "let g:deoplete#enable_at_startup = 1"}
 
-function plug.deoplete.hook_source() dict
+function plug.deoplete.hook_done_update() dict
+	call dein#remote_plugins()
 endfunction
 
 " Code snippets

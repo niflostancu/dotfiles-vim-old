@@ -3,6 +3,9 @@ let plug = g:user_plugins
 
 " Smart file indent autodetection
 let plug.sleuth = {'from': "tpope/vim-sleuth"}
+function! plug.sleuth.hook_source() dict
+	let g:sleuth_automatic = 0
+endfunction
 
 " Project .editorconfig detection
 let plug.editorconfig = {'from': "editorconfig/editorconfig-vim"}
