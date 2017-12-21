@@ -11,8 +11,6 @@ execute 'source' fnameescape(fnamemodify(expand('<sfile>:p'), ':h').'/config/uti
 
 call User_SourceCfg("paths.vim")
 call User_SourceCfg("editor.vim")
-call User_SourceCfg("shortcut.vim")
-call User_SourceCfg("mappings.vim")
 call User_SourceCfg("plugin_manager.vim")
 call User_SourceCfg("theme.vim")
 

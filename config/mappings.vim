@@ -1,8 +1,20 @@
 " Override / define vim mappings
 
 " Leaders
-let g:mapleader = '<space>'
+let g:mapleader = "\<Space>"
 let g:maplocalleader = '\'
+
+set timeoutlen=400 " milliseconds
+
+" Load sunaki's Shortcut plugin
+runtime plugin/shortcut.vim
+
+" Fallback to Shortcut
+Shortcut (Shortcut) show menu
+  \ noremap <silent> <Leader><Leader> :Shortcuts<Return>
+
+Shortcut (Shortcut) fallback to menu on partial entry
+  \ noremap <silent> <Leader> :Shortcuts<Return>
 
 " Mappings for denite / fuzzy searchers
 nnoremap [denite] <Nop>

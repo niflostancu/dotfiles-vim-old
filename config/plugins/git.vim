@@ -5,19 +5,19 @@ let plug.gina = {'from': "lambdalisue/gina.vim", "on_cmd": "Gina"}
 function plug.gina.hook_add() dict
 	" Gina key bindings
 	Shortcut (git/gina) Status
-		\ noremap <silent> <leader>gs :Gina status<CR>
+		\ noremap <silent> <Leader>gs :Gina status<CR>
 	Shortcut (git/gina) Commit
-		\ noremap <silent> <leader>gc :Gina commit<CR>
+		\ noremap <silent> <Leader>gc :Gina commit<CR>
 	Shortcut (git/gina) Commit (amend)
-		\ noremap <silent> <leader>gC :Gina commit<CR>
+		\ noremap <silent> <Leader>gC :Gina commit<CR>
 	Shortcut (git/gina) Add (stage) current file
-		\ noremap <silent> <leader>ga :Gina add %<CR>
+		\ noremap <silent> <Leader>ga :Gina add %<CR>
 	Shortcut (git/gina) Add (stage) all files
-		\ noremap <silent> <leader>gA :Gina add .<CR>
+		\ noremap <silent> <Leader>gA :Gina add .<CR>
 	Shortcut (git/gina) Diff (global)
-		\ noremap <silent> <leader>gd :Gina diff<CR>
+		\ noremap <silent> <Leader>gd :Gina diff<CR>
 	Shortcut (git/gina) Blame
-		\ noremap <silent> <leader>gb :Gina blame<CR>
+		\ noremap <silent> <Leader>gb :Gina blame<CR>
 endfunction
 
 let plug.committia = {'from': "rhysd/committia.vim", "on_path": "COMMIT_EDITMSG",

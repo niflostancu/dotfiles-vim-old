@@ -19,8 +19,11 @@ let s:dein_plugins = User_LoadPlugins()
 if dein#load_state(s:dein_cache)
 	call dein#begin(s:dein_cache, [expand('<sfile>')] +
 				\ split(globpath(expand('$VIM_CONFIG/'), '**/*.vim'), '\n'))
+	
+	let dein#_hook_add = 'call User_SourceCfg("mappings.vim")'
 
 	call dein#add(s:dein_dir)
+	call dein#add("sunaku/vim-shortcut", {'lazy': 1})
   call dein#load_dict(s:dein_plugins)
 
 	call dein#end()
