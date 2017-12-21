@@ -9,6 +9,11 @@ set timeoutlen=400 " milliseconds
 " Load sunaki's Shortcut plugin
 runtime plugin/shortcut.vim
 
+if !exists(":Shortcut")
+	echoerr "The Shortcut plugin is not loaded! Skipping mappings..."
+	finish
+endif
+
 " Fallback to Shortcut
 Shortcut (Shortcut) show menu
   \ noremap <silent> <Leader><Leader> :Shortcuts<Return>
