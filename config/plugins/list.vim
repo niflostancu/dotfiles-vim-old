@@ -19,9 +19,9 @@ function! plug.denite.hook_add() dict
 	Shortcut (Denite) resume
 		\ nnoremap <silent> [denite]r :<C-u>Denite -resume -refresh<CR>
 	Shortcut (Denite) find files (recursive)
-		\ nnoremap <silent> [denite]f :<C-u>Denite file_rec<CR>
+		\ nnoremap <silent> [denite]F :<C-u>Denite file_rec<CR>
 	Shortcut (Denite) switch buffer / most recently opened
-		\ nnoremap <silent> [denite]b :<C-u>Denite buffer file_old -default-action=switch<CR>
+		\ nnoremap <silent> [denite]B :<C-u>Denite buffer file_old -default-action=switch<CR>
 	Shortcut (Denite) change directory
 		\ nnoremap <silent> [denite]d :<C-u>Denite directory_rec -default-action=cd<CR>
 	Shortcut (Denite) show registers
@@ -44,6 +44,13 @@ function! plug.denite.hook_add() dict
 		\ nnoremap <silent> [denite]* :<C-u>DeniteCursorWord line<CR>
 endfunction
 
+function! plug.fzf.hook_add() dict
+	" Denite shortcuts
+	Shortcut (FZF) Files
+		\ nnoremap <silent> [denite]f :<C-u>Files<CR>
+	Shortcut (FZF) Buffers
+		\ nnoremap <silent> [denite]b :<C-u>Buffers<CR>
+endfunction
 function plug.denite.hook_source() dict
 	" Denite configuration
 	call denite#custom#option('_', {
@@ -107,8 +114,10 @@ function plug.denite.hook_source() dict
 				\  ['<Esc>', '<denite:quit>', 'noremap'],
 				\  ['<C-j>', '<denite:move_to_next_line>', 'noremap'],
 				\  ['<C-k>', '<denite:move_to_previous_line>', 'noremap'],
-				\  ['<Up>', '<denite:assign_previous_text>', 'noremap'],
-				\  ['<Down>', '<denite:assign_next_text>', 'noremap'],
+				\  ['<Up>', '<denite:move_to_previous_line>', 'noremap'],
+				\  ['<Down>', '<denite:move_to_next_line>', 'noremap'],
+				\  ['<C-Up>', '<denite:assign_previous_text>', 'noremap'],
+				\  ['<C-Down>', '<denite:assign_next_text>', 'noremap'],
 				\  ['<C-R>', '<denite:redraw>', 'noremap'],
 				\ ]
 
@@ -131,7 +140,6 @@ function plug.denite.hook_source() dict
 	for m in normal_mode_mappings
 		call denite#custom#map('normal', m[0], m[1], m[2])
 	endfor
-
 
 endfunction
 
