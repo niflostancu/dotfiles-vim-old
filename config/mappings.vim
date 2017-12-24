@@ -6,6 +6,11 @@ let g:maplocalleader = '\'
 
 set timeoutlen=400 " milliseconds
 
+" Saving with ctrl-s
+nnoremap <C-s> :<C-u>w<CR>
+vnoremap <C-s> :<C-u>w<CR>
+cnoremap <C-s> <C-u>w<CR>
+
 " Load sunaki's Shortcut plugin
 runtime plugin/shortcut.vim
 
