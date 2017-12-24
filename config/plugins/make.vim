@@ -1,25 +1,18 @@
 " Generic make plugins
 let plug = g:user_plugins
 
+" Neomake!
 let plug.neomake = {'from': "neomake/neomake", "on_cmd": "Neomake"}
 
-function plug.neomake.hook_add() dict
-	let g:lint_filetypes = [
-				\  'ansible', 'python', 'php', 'ruby', 'vim', 'go', 'sh',
-				\  'javascript', 'jsx', 'javascript.jsx', 'json', 'css',
-				\  'markdown', 'html', 'yaml'
-				\ ]
-	" automatically run on save
-	autocmd UserAuto BufWritePost *
-				\ if index(g:lint_filetypes, &filetype) > -1 && empty(&buftype)
-				\|   Neomake
-				\| elseif &filetype =~ 'html'
-				\|   Neomake tidy
-				\| endif
-
-endfunction
-
 function plug.neomake.hook_source() dict
+	call neomake#configure#automake({
+		\  "BufWritePost": {"delay": 0}
+		\ })
+
+	let g:neomake_echo_current_error = 0
+	let g:neomake_open_list = 0
+	let g:neomake_verbose = 0
+
 endfunction
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
