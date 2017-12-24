@@ -7,40 +7,50 @@ let plug.theme_onedark ={'from': "joshdick/onedark.vim"}
 
 " Airline (custom status / tab bar)
 let plug.airline = {'from': "vim-airline/vim-airline"}
+function plug.airline.hook_add() dict
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#taboo#enabled = 1
+	let g:airline#extensions#tabline#show_tabs = 1
+	let g:airline#extensions#tabline#show_buffers = 0
+	let g:airline#extensions#tabline#tab_nr_type = 1
+	let g:airline#extensions#tabline#show_splits = 1
+  let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
+	let g:airline_theme="one"
+endfunction
+
+let plug.airline_themes = {'from': "vim-airline/vim-airline-themes"}
+
+" Rename tabs and other tab goodies
+let plug.taboo = {'from': "gcmt/taboo.vim"}
+let g:taboo_tabline = 0
 
 " See the contents of the registers ('@' / '"')
 let plug.peekaboo = {'from': "junegunn/vim-peekaboo"}
 
 " Seamless TMux navigation
 let plug.tmux_navigator = {'from': "christoomey/vim-tmux-navigator"}
+function plug.tmux_navigator.hook_add() dict
+	nnoremap <silent> <C-Left> :TmuxNavigateLeft<CR>
+	nnoremap <silent> <C-Down> :TmuxNavigateDown<CR>
+	nnoremap <silent> <C-Up> :TmuxNavigateUp<CR>
+	nnoremap <silent> <C-Right> :TmuxNavigateRight<CR>
+endfunction
 
 " Undo tree!
 let plug.undotree = {'from': "mbbill/undotree", "on_cmd": "UndotreeToggle"}
 
 " Indent guides
-let plug.indentguides = {'from': "nathanaelkane/vim-indent-guides", 
-			\ "on_cmd": ["IndentGuidesEnable", "IndentGuidesDisable", "IndentGuidesToggle"]}
+let plug.indentguides = {'from': "nathanaelkane/vim-indent-guides"}
 function! plug.indentguides.hook_add() dict
 	let g:indent_guides_color_change_percent = 3
-	let g:indent_guides_autocmds_enabled = 0
 	let g:indent_guides_default_mapping = 0
 	let g:indent_guides_guide_size = 1
 	let g:indent_guides_start_level = 1
 	let g:indent_guides_indent_levels = 15
-	let g:indent_custom_exclude = [ 'help', 'denite', 'codi' ]
-	autocmd UserAuto BufEnter *
-				\ if ! empty(&l:filetype) && index(g:indent_custom_exclude, &l:filetype) == -1
-				\|   if g:indent_guides_autocmds_enabled == 0 && &l:expandtab
-				\|     IndentGuidesEnable
-				\|   elseif g:indent_guides_autocmds_enabled == 1 && ! &l:expandtab
-				\|     IndentGuidesDisable
-				\|   endif
-				\| endif
-
+	let g:indent_guides_exclude_filetypes = ['help', 'denite']
+	let g:indent_guides_auto_colors = 0
 endfunction
-function! plug.indentguides.hook_post_source() dict
-	call indent_guides#init_script_vars()
-	call indent_guides#highlight_colors()
-endfunction
+let g:indent_guides_enable_on_vim_startup = 1
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :

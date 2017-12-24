@@ -25,6 +25,8 @@ set virtualedit=block        " Position cursor anywhere in visual block
 set synmaxcol=1000           " Don't syntax highlight long lines
 set history=2000
 
+set cursorline               " Highlight the line under the cursor
+
 " Auto-formatting options
 set formatoptions+=1         " Don't break lines after a one-letter word
 set formatoptions-=t         " Don't auto-wrap text
@@ -40,13 +42,14 @@ set viewoptions-=options
 set viewoptions+=slash,unix
 
 " What to save in sessions:
+set sessionoptions+=curdir
+set sessionoptions+=buffers
+set sessionoptions+=tabpages
 set sessionoptions-=blank
 set sessionoptions-=options
 set sessionoptions-=globals
 set sessionoptions-=folds
 set sessionoptions-=help
-set sessionoptions-=buffers
-set sessionoptions+=tabpages
 
 if has('clipboard')
 	set clipboard& clipboard+=unnamedplus
@@ -80,6 +83,9 @@ set smarttab        " Tab insert blanks according to 'shiftwidth'
 set autoindent      " Use same indenting on new lines
 set smartindent     " Smart autoindenting on new lines
 set shiftround      " Round indent to multiple of 'shiftwidth'
+
+set nolist          " Keep hidden characters
+set listchars=tab:»\ ,trail:·,nbsp:×
 
 " }}}
 
@@ -144,9 +150,8 @@ set scrolloff=2         " Keep at least 2 lines above/below
 set sidescrolloff=5     " Keep at least 5 lines left/right
 set number              " Show line numbers
 set noruler             " Disable default status ruler
-set list                " Show hidden characters
 
-set showtabline=2       " Always show the tabs line
+" set showtabline=2       " Always show the tabs line
 set winwidth=30         " Minimum width for active window
 set winheight=1         " Minimum height for active window
 set pumheight=15        " Pop-up menu's line height

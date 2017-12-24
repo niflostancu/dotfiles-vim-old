@@ -16,6 +16,8 @@ let plug.parenmatch = {'from': "itchyny/vim-parenmatch"}
 " Underlines the word under the cursor
 let plug.cursorword = {'from': "itchyny/vim-cursorword"}
 function! plug.cursorword.hook_add() dict
+	" Disable it by default
+	let g:cursorword=0
 	" Disable for special buffers
 	autocmd UserAuto FileType denite,qf,nerdtree let b:cursorword=0
 endfunction
