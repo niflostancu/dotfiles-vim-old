@@ -24,7 +24,7 @@ if dein#load_state(s:dein_cache)
 
 	call dein#add(s:dein_dir)
 	call dein#add("sunaku/vim-shortcut", {'lazy': 1})
-  call dein#load_dict(s:dein_plugins)
+	call dein#load_dict(s:dein_plugins)
 
 	call dein#end()
 	call dein#save_state()

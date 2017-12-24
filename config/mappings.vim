@@ -9,8 +9,8 @@ set timeoutlen=400 " milliseconds
 " Load sunaki's Shortcut plugin
 runtime plugin/shortcut.vim
 
-if !exists(":Shortcut")
-	echoerr "The Shortcut plugin is not loaded! Skipping mappings..."
+if !exists(':Shortcut')
+	echoerr 'The Shortcut plugin is not loaded! Skipping mappings...'
 	finish
 endif
 
