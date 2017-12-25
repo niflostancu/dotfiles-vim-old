@@ -14,6 +14,22 @@ endfunction
 " JS Parameter Complete
 let plug.jspc = {'from': "othree/jspc.vim", "on_ft": js_ft_all}
 
+" TernJS Deoplete Plugin
+let plug.deoplete_tern = {'from': "carlitux/deoplete-ternjs", "on_ft": js_ft_all}
+function plug.deoplete_tern.hook_add() dict
+	let g:deoplete#sources#ternjs#types = 1
+	let g:deoplete#sources#ternjs#docs = 1
+	let g:deoplete#sources#ternjs#timeout = 3
+
+	let g:deoplete#sources#ternjs#filetypes = [
+				\ 'jsx',
+				\ 'javascript.jsx',
+				\ 'vue',
+				\ 'javascript'
+				\ ]
+
+endfunction
+
 " Pretty JSX syntax
 let plug.jsxpretty = {'from': "MaxMEllon/vim-jsx-pretty", "on_ft": js_ft_all}
 " JSDoc creation

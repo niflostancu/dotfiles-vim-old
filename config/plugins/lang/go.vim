@@ -12,6 +12,6 @@ function! plug.go.hook_source() dict
 endfunction
 
 " Go deoplete daemon
-" let plug.go_deoplete = {'from': "zchee/deoplete-go", "on_ft": "go", "build": "make"}
+let plug.go_deoplete = {'from': "zchee/deoplete-go", "on_ft": "go", "build": "make"}
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :

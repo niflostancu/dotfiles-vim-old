@@ -12,6 +12,11 @@ function plug.deoplete.hook_done_update() dict
 	call dein#remote_plugins()
 endfunction
 
+function! s:check_back_space() abort "{{{
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
 function plug.deoplete.hook_source() dict
 	" General settings " {{{
 	" ---
@@ -25,6 +30,11 @@ function plug.deoplete.hook_source() dict
 
 	let g:deoplete#tag#cache_limit_size = 800000
 	let g:deoplete#file#enable_buffer_path = 1
+
+	inoremap <silent><expr> <TAB>
+				\ pumvisible() ? "\<C-n>" :
+				\ <SID>check_back_space() ? "\<TAB>" :
+				\ deoplete#mappings#manual_complete()
 
 endfunction
 
