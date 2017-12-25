@@ -1,0 +1,6 @@
+# Ignore local customization files
+*.local.vim
+
+# Ignore session files
+Session.vim
+
