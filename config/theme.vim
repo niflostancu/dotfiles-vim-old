@@ -14,6 +14,8 @@ function! UserIndentGuidesColor()
 endfunction
 autocmd UserAuto VimEnter,Colorscheme * call UserIndentGuidesColor()
 
-execute 'colorscheme one'
 set background=dark
+execute 'colorscheme one'
+
+autocmd UserAuto VimEnter execute 'colorscheme one'
 
