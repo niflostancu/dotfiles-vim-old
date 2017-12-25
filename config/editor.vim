@@ -51,10 +51,6 @@ set sessionoptions-=globals
 set sessionoptions-=folds
 set sessionoptions-=help
 
-if has('clipboard')
-	set clipboard& clipboard+=unnamedplus
-endif
-
 " }}}
 
 " Ex-mode / command-line / wildmenu {{{
