@@ -13,6 +13,7 @@ function plug.airline.hook_add() dict
 	let g:airline#extensions#tabline#show_tabs = 1
 	let g:airline#extensions#tabline#show_buffers = 0
 	let g:airline#extensions#tabline#tab_nr_type = 1
+
 	let g:airline#extensions#tabline#show_splits = 1
   let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
@@ -20,10 +21,6 @@ function plug.airline.hook_add() dict
 endfunction
 
 let plug.airline_themes = {'from': "vim-airline/vim-airline-themes"}
-
-" Rename tabs and other tab goodies
-let plug.taboo = {'from': "gcmt/taboo.vim"}
-let g:taboo_tabline = 0
 
 " See the contents of the registers ('@' / '"')
 let plug.peekaboo = {'from': "junegunn/vim-peekaboo"}
