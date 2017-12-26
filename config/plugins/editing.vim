@@ -25,6 +25,48 @@ endfunction
 " Commenting plugin
 let plug.tcomment = {'from': "tomtom/tcomment_vim"}
 
+" Incremental search
+let plug.incsearch = {'from': "haya14busa/incsearch.vim", 
+			\ "on_map": {"n": '<Plug>(incsearch-'}}
+function plug.incsearch.hook_add() dict
+	let g:incsearch#auto_nohlsearch = 1
+	set hlsearch
+	map /  <Plug>(incsearch-forward)
+	map ?  <Plug>(incsearch-backward)
+	map g/ <Plug>(incsearch-stay)
+	map n  <Plug>(incsearch-nohl-n)
+	map N  <Plug>(incsearch-nohl-N)
+	map *  <Plug>(incsearch-nohl-*)
+	map #  <Plug>(incsearch-nohl-#)
+	map g* <Plug>(incsearch-nohl-g*)
+	map g# <Plug>(incsearch-nohl-g#)
+endfunction
+" Fuzzy incremental search
+let plug.fuzzyincsearch = {'from': "haya14busa/incsearch-fuzzy.vim",
+			\ "on_map": {"n": '<Plug>(incsearch-fuzzy'}}
+function plug.fuzzyincsearch.hook_add() dict
+	map z/ <Plug>(incsearch-fuzzyspell-/)
+	map z? <Plug>(incsearch-fuzzyspell-?)
+	map zg/ <Plug>(incsearch-fuzzyspell-stay)
+endfunction
+
+" Improved *asterisk (search current word)
+let plug.asterisk = {'from': "haya14busa/vim-asterisk",
+			\ "on_map": {"n": '<Plug>(asterisk-'}}
+function plug.asterisk.hook_add() dict
+	map *   <Plug>(asterisk-*)
+	map #   <Plug>(asterisk-#)
+	map g*  <Plug>(asterisk-g*)
+	map g#  <Plug>(asterisk-g#)
+	map z*  <Plug>(asterisk-z*)
+	map gz* <Plug>(asterisk-gz*)
+	map z#  <Plug>(asterisk-z#)
+	map gz# <Plug>(asterisk-gz#)
+endfunction
+
+" Preview :substitute
+let plug.over = {'from': "osyo-manga/vim-over"}
+
 " Find and Replace in multiple files
 let plug.far = {'from': "brooth/far.vim", "on_cmd": ["Far", "Farp", "F"]}
 
