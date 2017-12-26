@@ -25,7 +25,9 @@ set virtualedit=block        " Position cursor anywhere in visual block
 set synmaxcol=1000           " Don't syntax highlight long lines
 set history=2000
 
-set cursorline               " Highlight the line under the cursor
+" Highlight the line under the cursor
+au UserAuto WinLeave * set nocursorline
+au UserAuto WinEnter * set cursorline
 
 " Auto-formatting options
 set formatoptions+=1         " Don't break lines after a one-letter word
