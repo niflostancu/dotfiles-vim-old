@@ -50,6 +50,10 @@ function! plug.fzf.hook_add() dict
 		\ nnoremap <silent> [denite]f :<C-u>Files<CR>
 	Shortcut (FZF) Buffers
 		\ nnoremap <silent> [denite]b :<C-u>Buffers<CR>
+	Shortcut (FZF) Tags (current word)
+		\ nnoremap <silent> [denite]; :<C-u>Tags<CR>
+	Shortcut (FZF) Tags (current word)
+		\ nnoremap <silent> [denite]] :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
 endfunction
 function plug.denite.hook_source() dict
 	" Denite configuration
