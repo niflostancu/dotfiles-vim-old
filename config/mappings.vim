@@ -12,6 +12,9 @@ vnoremap <C-s> :<C-u>w<CR>
 cnoremap <C-s> <C-u>w<CR>
 
 " Load sunaki's Shortcut plugin
+execute 'set runtimepath+='.fnameescape(fnamemodify(dein#util#_get_base_path().
+		\ "/repos/github.com/sunaku/vim-shortcut", ":p"))
+
 runtime plugin/shortcut.vim
 
 if !exists(':Shortcut')
