@@ -20,8 +20,12 @@ function plug.gina.hook_add() dict
 		\ noremap <silent> <Leader>gb :Gina blame<CR>
 endfunction
 
+" Enhanced commit message editing
 let plug.committia = {'from': "rhysd/committia.vim", "on_path": "COMMIT_EDITMSG",
 		\ "hook_source": "let g:committia_min_window_width = 70"}
+
+" Git diff gutter
+let plug.gitgutter = {'from': "airblade/vim-gitgutter"}
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
 
