@@ -17,6 +17,8 @@ Only tested with [NeoVim](https://neovim.io/) (>= 0.2.2).
 - Respects the XDG specification, having separate _.config_ and _.cache_ directories.
 - Good looking and functional ;) 
 
+![Vim Screenshot](screenshot.png)
+
 
 ## Installation
 
