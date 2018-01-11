@@ -2,24 +2,19 @@
 let plug = g:user_plugins
 
 " Context file type library
-let plug.context_filetype = {'from': "Shougo/context_filetype.vim", "lazy": 1}
+let plug.context_filetype = {'from': "Shougo/context_filetype.vim"}
 
 " Deoplete - asynchronous autocompletion
-let plug.deoplete = {'from': "Shougo/deoplete.nvim", "depends": "context_filetype.vim",
-		\ "hook_add": "let g:deoplete#enable_at_startup = 1"}
+let plug.deoplete = {'from': "Shougo/deoplete.nvim"}
 
 function plug.deoplete.hook_done_update() dict
 	call dein#remote_plugins()
 endfunction
 
-function! s:check_back_space() abort "{{{
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
+function plug.deoplete.hook_add() dict
+	let g:deoplete#enable_at_startup = 1
 
-function plug.deoplete.hook_source() dict
-	" General settings " {{{
-	" ---
+	" Deoplete settings
 	let g:deoplete#auto_complete_delay = 50
 	let g:deoplete#auto_refresh_delay = 500
 	let g:deoplete#enable_refresh_always = 0
@@ -28,8 +23,12 @@ function plug.deoplete.hook_source() dict
 	let g:deoplete#max_menu_width = 20
 	let g:deoplete#skip_chars = ['(', ')', '<', '>']
 
-	let g:deoplete#tag#cache_limit_size = 800000
+	let g:deoplete#tag#cache_limit_size = 5000000
 	let g:deoplete#file#enable_buffer_path = 1
+
+	" Generic source tweaks
+	call deoplete#custom#source('buffer', 'rank', 9999)
+	call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 
 	inoremap <silent><expr> <TAB>
 				\ pumvisible() ? "\<C-n>" :
@@ -37,6 +36,14 @@ function plug.deoplete.hook_source() dict
 				\ deoplete#mappings#manual_complete()
 
 endfunction
+
+function! s:check_back_space() abort "{{{
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+" Syntax keywords source for deoplete
+let plug.neco_syntax = {'from': "Shougo/neco-syntax"}
 
 " Code snippets
 let plug.neosnippet = {'from': "Shougo/neosnippet.vim", "depends": [

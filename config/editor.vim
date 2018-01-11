@@ -44,9 +44,9 @@ set viewoptions-=options
 set viewoptions+=slash,unix
 
 " What to save in sessions:
-set sessionoptions+=curdir
-set sessionoptions+=buffers
+set sessionoptions-=curdir
 set sessionoptions+=tabpages
+set sessionoptions+=buffers
 set sessionoptions-=blank
 set sessionoptions-=options
 set sessionoptions-=globals
@@ -74,9 +74,9 @@ endif
 " ----------------
 set textwidth=80    " Text width maximum chars before wrapping
 set noexpandtab     " Don't expand tabs to spaces.
-set tabstop=2       " The number of spaces a tab is
-set softtabstop=2   " While performing editing operations
-set shiftwidth=2    " Number of spaces to use in auto(indent)
+set tabstop=4       " The number of spaces a tab is
+set softtabstop=4   " While performing editing operations
+set shiftwidth=4    " Number of spaces to use in auto(indent)
 set smarttab        " Tab insert blanks according to 'shiftwidth'
 set autoindent      " Use same indenting on new lines
 set smartindent     " Smart autoindenting on new lines
@@ -128,7 +128,7 @@ set diffopt=filler,iwhite       " Diff mode: show fillers, ignore white
 set showfulltag                 " Show tag and tidy search in completion
 set complete=.                  " No wins, buffs, tags, include scanning
 set completeopt=menuone         " Show menu even for one item
-set completeopt+=noselect       " Do not select a match in the menu
+" set completeopt+=noselect       " Do not select a match in the menu
 if has('patch-7.4.775')
 	set completeopt+=noinsert
 endif
