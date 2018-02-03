@@ -73,10 +73,10 @@ endif
 " Tabs and Indents {{{
 " ----------------
 set textwidth=80    " Text width maximum chars before wrapping
-set noexpandtab     " Don't expand tabs to spaces.
+set noexpandtab     " Don't expand tabs to spaces by default.
 set tabstop=4       " The number of spaces a tab is
-set softtabstop=4   " While performing editing operations
 set shiftwidth=4    " Number of spaces to use in auto(indent)
+set softtabstop=0   " Don't use softtabstop
 set smarttab        " Tab insert blanks according to 'shiftwidth'
 set autoindent      " Use same indenting on new lines
 set smartindent     " Smart autoindenting on new lines
@@ -154,7 +154,7 @@ set winwidth=30         " Minimum width for active window
 set winheight=1         " Minimum height for active window
 set pumheight=15        " Pop-up menu's line height
 set helpheight=12       " Minimum help window height
-set previewheight=12    " Completion preview height
+set previewheight=14    " Completion preview height
 
 set noshowcmd           " Don't show command in status line
 set cmdheight=1         " Height of the command line

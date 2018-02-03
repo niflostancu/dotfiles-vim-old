@@ -73,4 +73,17 @@ function! s:BuffersCleanup()
 	endfor
 endfunction
 
+" Change indent width
+command! IndentWidth call s:IndentWidth()
+function! s:IndentWidth(...)
+	let l:width = 4
+	if a:0 >= 1 && a:1 =~# '^\d\+$'
+		let l:width = a:1 
+	endif
+
+	let &l:tabstop = l:width
+	let &l:softtabstop = 0
+	let &l:shiftwidth = l:width
+endfunction
+
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
