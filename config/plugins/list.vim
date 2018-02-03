@@ -87,7 +87,7 @@ function plug.denite.hook_source() dict
 	if executable('ag')
 		" The Silver Searcher
 		call denite#custom#var('file_rec', 'command',
-					\ ['ag', '-U', '--hidden', '--follow', '--nocolor', '--nogroup', '-g', ''])
+					\ ['ag', '--hidden', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
 		" Setup ignore patterns in your .agignore file!
 		" https://github.com/ggreer/the_silver_searcher/wiki/Advanced-Usage
@@ -98,7 +98,7 @@ function plug.denite.hook_source() dict
 		call denite#custom#var('grep', 'separator', ['--'])
 		call denite#custom#var('grep', 'final_opts', [])
 		call denite#custom#var('grep', 'default_opts',
-					\ [ '--skip-vcs-ignores', '--vimgrep', '--smart-case', '--hidden' ])
+					\ [ '--ignore', '.tags', '--vimgrep', '--smart-case', '--hidden' ])
 
 	elseif executable('ack')
 		" Ack command
