@@ -28,8 +28,8 @@ function plug.gina.hook_source() dict
 	call gina#custom#command#option('commit', '--group', 'short')
 	call gina#custom#command#option('log', '--opener', &previewheight . 'split')
 	call gina#custom#command#option('log', '--group', 'short2')
-	call gina#custom#command#option('stash', '--opener', &previewheight . 'split')
-	call gina#custom#command#option('stash', '--group', 'short2')
+	call gina#custom#command#option('stash list', '--opener', &previewheight . 'split')
+	call gina#custom#command#option('stash list', '--group', 'short2')
 endfunction
 
 " Enhanced commit message editing
