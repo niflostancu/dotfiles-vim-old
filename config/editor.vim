@@ -61,12 +61,23 @@ if has('wildmenu')
 	set nowildmenu
 	set wildmode=list:longest,full
 	set wildoptions=tagfile
-	set wildignorecase
-	set wildignore+=.git,.hg,.svn,.stversions,*.pyc,*.spl,*.o,*.out,*~,%*
-	set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store
-	set wildignore+=**/node_modules/**,**/bower_components/**,*/.sass-cache/*
-	set wildignore+=__pycache__,*.egg-info,**/htmlcov/**
 endif
+
+" Wildcard ignores
+set wildignorecase
+" Versions / repos
+set wildignore+=.git,.hg,.svn,.stversions,*.pyc,*.spl,*.o,*.out,*~,%*
+" Ignore dist / build folders
+set wildignore+=*/dist*/**,*/target/**,*/build/**,*/tmp/**,*.DS_Store
+" Python build folders
+set wildignore+=*/.venv*/**,*/__pycache__/**,*.egg-info,*/htmlcov/**
+" Ignore libs
+set wildignore+=*/lib/**,*/node_modules/**,*/bower_components/**,*/.sass-cache/*
+" Ignore temp / binary / object files
+set wildignore+=*.pyc,*.o,*.out,*~,%*
+set wildignore+=*.png,*.jpg,*.jpeg,*.pdf,*.gif,*.zip
+set wildignore+=*.ttf,*.otf,*.woff,*.woff2,*.eot
+
 
 " }}}
 
