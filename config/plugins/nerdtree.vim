@@ -10,7 +10,7 @@ function plug.nerdtree.hook_source() dict
 	let g:NERDTreeCascadeSingleChildDir = 0
 	let g:NERDTreeShowHidden = 0
 	let g:NERDTreeRespectWildIgnore = 0
-	let g:NERDTreeAutoDeleteBuffer = 0
+	let g:NERDTreeAutoDeleteBuffer = 1
 	let g:NERDTreeQuitOnOpen = 0
 	let g:NERDTreeHijackNetrw = 1
 	let g:NERDTreeBookmarksFile = $VIM_CACHE.'/treemarks'
