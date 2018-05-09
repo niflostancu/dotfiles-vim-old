@@ -11,6 +11,11 @@ function! plug.javascript.hook_source() dict
 	highlight! link jsFutureKeys PreProc
 endfunction
 
+" Language specific add hook
+function! plug.javascript.hook_add() dict
+	let g:ale_linter_aliases = {'html': ['javascript', 'html']}
+endfunction
+
 " JS Parameter Complete
 let plug.jspc = {'from': "othree/jspc.vim", "on_ft": js_ft_all}
 

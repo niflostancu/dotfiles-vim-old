@@ -1,7 +1,7 @@
 " Generic make plugins
 let plug = g:user_plugins
 
-" Neomake
+" Neomake (disabled)
 let plug.neomake = {'from': "neomake/neomake", "on_cmd": "Neomake", "if": 0}
 function plug.neomake.hook_source() dict
 	call neomake#configure#automake({
@@ -14,6 +14,7 @@ function plug.neomake.hook_source() dict
 
 endfunction
 
+" Asynchronous Lint Engine
 let plug.ale = {'from': "w0rp/ale"}
 function plug.ale.hook_add() dict
 	let g:ale_sign_error = '✖'
