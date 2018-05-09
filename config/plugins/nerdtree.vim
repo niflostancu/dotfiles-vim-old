@@ -11,6 +11,7 @@ function plug.nerdtree.hook_source() dict
 	let g:NERDTreeShowHidden = 0
 	let g:NERDTreeRespectWildIgnore = 0
 	let g:NERDTreeAutoDeleteBuffer = 1
+	let g:NERDTreeChDirMode = 0  " CWD when changing root dir
 	let g:NERDTreeQuitOnOpen = 0
 	let g:NERDTreeHijackNetrw = 1
 	let g:NERDTreeBookmarksFile = $VIM_CACHE.'/treemarks'

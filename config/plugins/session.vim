@@ -21,16 +21,51 @@ function s:save_session_extended()
 		let l:title = gettabvar(i, 'title')
 		if !empty(l:title)
 			call insert(l:body, 'call settabvar(' .string(i). ', ''title'', "'.
-						\ escape(l:title, '\\"') . '")', -3)
+						\ escape(l:title, '\"') . '")', -3)
 		endif
 		" Preserve NERDTree open state
-		let l:NERDBufName = gettabvar(i, 'NERDTreeBufName')
-		if l:NERDBufName && bufwinnr(l:NERDBufName) != -1
-			" call insert(l:body, "", -3) TODO
-		endif
+		try
+			let l:NERDBufName = gettabvar(i, 'NERDTreeBufName')
+			if !empty(l:NERDBufName) && bufnr(l:NERDBufName) != -1
+				let l:NERDTree = getbufvar(bufnr(l:NERDBufName), "NERDTree")
+				if !empty(l:NERDTree)
+					let l:code = [
+							\ "tabnext " . string(i),
+							\ "NERDTree \"" .
+							\ 	escape(l:NERDTree.root.path.str(), '\"') . "\""
+						\ ]
+					let l:openDirs = s:NERDTree_extractOpenDirs(l:NERDTree.root)
+					for p in l:openDirs
+						call add(l:code, "call b:NERDTree.root.reveal(g:NERDTreePath.New(\"" .
+							\ escape(p, '\"') . "\"), { \"open\": 1 })")
+					endfor
+					call add(l:code, "call b:NERDTree.render()")
+					call extend(l:body, l:code, -3)
+				endif
+			endif
+		catch
+			echom "caught" v:exception "at" v:throwpoint
+		endtry
 	endfor
+	call insert(l:body, "tabnext 1", -3)
 	call writefile(body, g:this_obsession)
+endfunction
 
+function! s:NERDTree_extractOpenDirs(rootNode) abort
+    let retVal = []
+
+    for node in a:rootNode.children
+        if has_key(node, "isOpen") && node.isOpen
+            call add(retVal, node.path.str())
+
+            let childOpenDirs = s:NERDTree_extractOpenDirs(node)
+            if !empty(childOpenDirs)
+                let retVal = retVal + childOpenDirs
+            endif
+        endif
+    endfor
+
+    return retVal
 endfunction
 
 function s:load_session()
