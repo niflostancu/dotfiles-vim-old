@@ -4,6 +4,9 @@ let plug = g:user_plugins
 " Dockerfiles
 let plug.dockerfile = {'from': "ekalinin/Dockerfile.vim", "on_ft": ["Dockerfile", "docker-compose"]}
 
+" Vagrant
+let plug.vagrant = {'from': "hashivim/vim-vagrant", "on_ft": ["ruby"]}
+
 " Log files
 let plug.logreview = {'from': "andreshazard/vim-logreview", "on_ft": "logreview"}
 
