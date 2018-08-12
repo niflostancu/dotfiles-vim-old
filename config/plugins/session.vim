@@ -25,30 +25,43 @@ function s:save_session_extended()
 		endif
 		" Preserve NERDTree open state
 		try
-			let l:NERDBufName = gettabvar(i, 'NERDTreeBufName')
-			if !empty(l:NERDBufName) && bufnr(l:NERDBufName) != -1
-				let l:NERDTree = getbufvar(bufnr(l:NERDBufName), "NERDTree")
-				if !empty(l:NERDTree)
-					let l:code = [
-							\ "tabnext " . string(i),
-							\ "NERDTree \"" .
-							\ 	escape(l:NERDTree.root.path.str(), '\"') . "\""
-						\ ]
-					let l:openDirs = s:NERDTree_extractOpenDirs(l:NERDTree.root)
-					for p in l:openDirs
-						call add(l:code, "call b:NERDTree.root.reveal(g:NERDTreePath.New(\"" .
-							\ escape(p, '\"') . "\"), { \"open\": 1 })")
-					endfor
-					call add(l:code, "call b:NERDTree.render()")
-					call extend(l:body, l:code, -3)
-				endif
+			let l:NERDTree = s:NERDTree_getTreeForTab(i)
+			if !empty(l:NERDTree)
+				let l:code = [
+						\ "tabnext " . string(i),
+						\ "NERDTree \"" .
+						\ 	escape(l:NERDTree.root.path.str(), '\"') . "\""
+					\ ]
+				let l:openDirs = s:NERDTree_extractOpenDirs(l:NERDTree.root)
+				for p in l:openDirs
+					call add(l:code, "call b:NERDTree.root.reveal(g:NERDTreePath.New(\"" .
+						\ escape(p, '\"') . "\"), { \"open\": 1 })")
+				endfor
+				call add(l:code, "call b:NERDTree.render()")
+				call extend(l:body, l:code, -3)
 			endif
 		catch
-			echom "caught" v:exception "at" v:throwpoint
+			echoerr "caught" v:exception "at" v:throwpoint
 		endtry
 	endfor
 	call insert(l:body, "tabnext 1", -3)
 	call writefile(body, g:this_obsession)
+endfunction
+
+function! s:NERDTree_getTreeForTab(i) abort
+	let l:NERDBufName = gettabvar(a:i, 'NERDTreeBufName')
+	if empty(l:NERDBufName) || bufnr(l:NERDBufName) == -1
+		return ""
+	endif
+	" There may be multiple NERDTree buffers with the same name (wrongly saved by
+	" mksession), search for the right one
+	for l:bufNr in range(1, bufnr('$'))
+		let l:NERDTree = getbufvar(l:bufNr, "NERDTree")
+		if (bufname(l:bufNr) ==# l:NERDBufName) && type(l:NERDTree) == v:t_dict
+			return l:NERDTree
+		endif
+	endfor
+	return ""
 endfunction
 
 function! s:NERDTree_extractOpenDirs(rootNode) abort
