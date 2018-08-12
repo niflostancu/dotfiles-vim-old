@@ -30,5 +30,11 @@ function! plug.markdown_gh.hook_source() dict
 	let g:gfm_syntax_enable_filetypes = ['markdown']
 endfunction
 
+" LaTeX FTW
+let plug.vimtex = {'from': 'lervag/vimtex', "on_ft": ["plaintex", "tex", "bib"]}
+function! plug.vimtex.hook_add() dict
+	let g:vimtex_compiler_progname = 'nvr'
+endfunction
+
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
 
