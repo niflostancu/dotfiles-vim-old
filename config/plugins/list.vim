@@ -8,7 +8,7 @@ let plug.denite_location = {'from': "chemzqm/unite-location", "on_source": "deni
 
 " Fuzzy Finder (note: requires the fzf executable installed externally)
 let plug.fzf = {'from': "junegunn/fzf", 'merged': 0, "if": "executable('fzf')"}
-let plug.fzfvim = {'from': "junegunn/fzf.vim", "if": "executable('fzf')"}
+let plug.fzfvim = {'from': "junegunn/fzf.vim", 'depends': 'fzf', "if": "executable('fzf')"}
 
 function plug.denite.hook_done_update() dict
 	call dein#remote_plugins()
@@ -44,8 +44,10 @@ function! plug.denite.hook_add() dict
 		\ nnoremap <silent> [denite]* :<C-u>DeniteCursorWord line<CR>
 endfunction
 
-function! plug.fzf.hook_add() dict
-	" Denite shortcuts
+function! plug.fzfvim.hook_add() dict
+	let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+	" FZF shortcuts
 	Shortcut (FZF) Files
 		\ nnoremap <silent> [denite]f :<C-u>Files<CR>
 	Shortcut (FZF) Buffers
@@ -55,7 +57,20 @@ function! plug.fzf.hook_add() dict
 	Shortcut (FZF) Tags (current word)
 		\ nnoremap <silent> [denite]] :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
 endfunction
-function plug.denite.hook_source() dict
+
+function! plug.fzfvim.hook_source() dict
+
+	command! -nargs=* Ag
+			\ call fzf#vim#grep('ag --nogroup --column --color --hidden ' . 
+			\    shellescape(<q-args>), 1)
+
+	command! -nargs=* Agg
+			\ call fzf#vim#grep('ag --column --nogroup --color --hidden --max-count 1 ' .
+			\    shellescape(<q-args>), 1)
+
+endfunction
+
+function! plug.denite.hook_source() dict
 	" Denite configuration
 	call denite#custom#option('_', {
 				\ 'prompt': 'λ:',
@@ -87,7 +102,7 @@ function plug.denite.hook_source() dict
 	if executable('ag')
 		" The Silver Searcher
 		call denite#custom#var('file_rec', 'command',
-					\ ['ag', '--hidden', '--follow', '--nocolor', '--nogroup', '-g', ''])
+					\ ['ag', '--hidden', '--nocolor', '--nogroup', '-g', ''])
 
 		" Setup ignore patterns in your .agignore file!
 		" https://github.com/ggreer/the_silver_searcher/wiki/Advanced-Usage
@@ -98,7 +113,7 @@ function plug.denite.hook_source() dict
 		call denite#custom#var('grep', 'separator', ['--'])
 		call denite#custom#var('grep', 'final_opts', [])
 		call denite#custom#var('grep', 'default_opts',
-					\ [ '--ignore', '.tags', '--vimgrep', '--smart-case', '--hidden' ])
+					\ [ '--ignore', '.tags', '-i', '--vimgrep', '--hidden' ])
 
 	elseif executable('ack')
 		" Ack command
