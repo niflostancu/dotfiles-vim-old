@@ -72,7 +72,7 @@ set wildignore+=*/dist*/**,*/target/**,*/build/**,*/tmp/**,*.DS_Store
 " Python build folders
 set wildignore+=*/.venv*/**,*/__pycache__/**,*.egg-info,*/htmlcov/**
 " Ignore libs
-set wildignore+=*/lib/**,*/node_modules/**,*/bower_components/**,*/.sass-cache/*
+set wildignore+=*/node_modules/**,*/bower_components/**,*/.sass-cache/*
 " Ignore temp / binary / object files
 set wildignore+=*.pyc,*.o,*.out,*~,%*
 set wildignore+=*.png,*.jpg,*.jpeg,*.pdf,*.gif,*.zip
