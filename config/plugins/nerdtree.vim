@@ -3,6 +3,19 @@ let plug = g:user_plugins
 
 let plug.nerdtree = {'from': "scrooloose/nerdtree", "on_map": {"n": "<Plug>"}, 
 			\ "on_cmd": "NERDTree"}
+let plug.nerdtree_git = {'from': "Xuyuanp/nerdtree-git-plugin", "on_source": "nerdtree"}
+
+function plug.nerdtree.hook_add() dict
+	" Key bindings
+	Shortcut (NERDTree) Toggle
+		\ noremap <silent> <F3> :NERDTreeToggle<CR>
+	Shortcut (NERDTree) Toggle (alt)
+	  \ noremap <silent> [denite]e :NERDTreeToggle<CR>
+	Shortcut (NERDTree) Find current file
+		\ noremap <silent> [denite]a :NERDTreeFind<CR>
+
+endfunction
+
 function plug.nerdtree.hook_source() dict
 	let g:NERDTreeMinimalUI = 1
 	let g:NERDTreeWinSize = 31
@@ -23,21 +36,30 @@ function plug.nerdtree.hook_source() dict
 	autocmd UserAuto FileType nerdtree call s:nerdtree_settings()
 endfunction
 
-function plug.nerdtree.hook_add() dict
-	" Key bindings
-	Shortcut (NERDTree) Toggle
-		\ noremap <silent> <F3> :NERDTreeToggle<CR>
-	Shortcut (NERDTree) Toggle (alt)
-	  \ noremap <silent> [denite]e :NERDTreeToggle<CR>
-	Shortcut (NERDTree) Find current file
-		\ noremap <silent> [denite]a :NERDTreeFind<CR>
+function plug.nerdtree.hook_post_source() dict
 
+	call NERDTreeAddKeyMap({
+				\ 'key': 'C',
+				\ 'callback': 'NERDTree_EnhancedCHR',
+				\ 'quickhelpText': 'Switch root + Change Dir + tcd',
+				\ 'scope': 'DirNode' })
+
+endfunction
+
+" Changes the root directory with neovim "tcd" integration
+function! NERDTree_EnhancedCHR(node)
+	call b:NERDTree.changeRoot(a:node)
+
+	if exists(":tcd")
+		execute 'tcd' fnameescape(a:node.path.str())
+	else
+		execute 'cd' fnameescape(a:node.path.str())
+	endif
+	call nerdtree#echo("CWD is now: " . a:node.path.str())
 endfunction
 
 function! s:nerdtree_settings() abort
 	setlocal expandtab " Enable vim-indent-guides
 endfunction
-
-let plug.nerdtree_git = {'from': "Xuyuanp/nerdtree-git-plugin", "on_source": "nerdtree"}
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
