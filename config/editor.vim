@@ -28,6 +28,7 @@ set history=2000
 " Highlight the line under the cursor
 au UserAuto WinLeave * set nocursorline
 au UserAuto WinEnter * set cursorline
+au UserAuto BufEnter * syntax sync fromstart
 
 " Auto-formatting options
 set formatoptions+=1         " Don't break lines after a one-letter word
