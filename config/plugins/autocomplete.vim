@@ -15,6 +15,8 @@ function plug.deoplete.hook_add() dict
 	let g:deoplete#enable_at_startup = 1
 
 	" Deoplete settings
+	let g:deoplete#ignore_sources = {}
+
 	let g:deoplete#auto_complete_delay = 50
 	let g:deoplete#auto_refresh_delay = 500
 	let g:deoplete#enable_refresh_always = 0
