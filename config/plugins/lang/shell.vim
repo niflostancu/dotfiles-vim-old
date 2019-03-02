@@ -5,7 +5,7 @@ let plug = g:user_plugins
 let plug.powershell = {'from': "PProvost/vim-ps1", "on_ft": "ps1"}
 
 " Shebang pattern detection
-let plug.shebang = {'from': "vitalk/vim-shebang", 'lazy': 1}
+let plug.shebang = {'from': "vitalk/vim-shebang", "if": 1}
 function! plug.shebang.hook_add() dict
 	autocmd UserAuto VimEnter * 
 				\ AddShebangPattern! execline ^#!.*/bin/execlineb\s\+
