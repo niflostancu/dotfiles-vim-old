@@ -7,7 +7,11 @@
 " Requires Neovim, python3 etc.
 
 " First, include the utility library
-execute 'source' fnameescape(fnamemodify(expand('<sfile>:p'), ':h').'/config/utils.vim')
+let s:path = fnamemodify(expand('<sfile>:p'), ':h')
+execute 'source' fnameescape(s:path . '/config/utils.vim')
+
+" Also include this config dir to runtimepath
+execute 'set runtimepath+=' . fnameescape(s:path)
 
 call User_SourceCfg("paths.vim")
 call User_SourceCfg("editor.vim")
