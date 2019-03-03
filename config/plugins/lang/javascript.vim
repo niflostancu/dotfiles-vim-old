@@ -42,6 +42,9 @@ let plug.jsdoc = {'from': "heavenshell/vim-jsdoc", "on_ft": js_ft_all}
 " NodeJS helpers (e.g. find node module / required files)
 let plug.nodejs = {'from': "moll/vim-node", "on_ft": js_ft_all}
 
+" Polymer / Lit-HTML Syntax
+let plug.polymer = {'from': "jonsmithers/vim-html-template-literals", "on_ft": js_ft_all}
+
 " JSON syntax
 let plug.json = {'from': "elzr/vim-json", "on_ft": "json"}
 function! plug.json.hook_add() dict
