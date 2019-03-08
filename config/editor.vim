@@ -46,13 +46,14 @@ set viewoptions+=slash,unix
 
 " What to save in sessions:
 set sessionoptions-=curdir
+set sessionoptions-=sesdir
 set sessionoptions+=tabpages
 set sessionoptions+=buffers
-set sessionoptions-=blank
+set sessionoptions+=blank
 set sessionoptions-=options
 set sessionoptions-=globals
 set sessionoptions-=folds
-set sessionoptions-=help
+set sessionoptions+=help
 
 " }}}
 
