@@ -35,7 +35,7 @@ if dein#load_state(s:dein_cache)
 endif
 
 filetype plugin indent on
-syntax enable
+syntax on
 
 " Disable pre-bundled plugins
 let g:loaded_getscript = 1

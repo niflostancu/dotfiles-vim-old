@@ -9,10 +9,6 @@ augroup UserAuto
 	autocmd!
 augroup END
 
-" Syntax highlighting and filetype plugins, yes please
-filetype plugin indent on
-syntax enable
-
 set hidden                   " Turn on hidden buffers (allows having multiple files open)
 set modeline                 " Automatically use modeline settings from files
 set fileformats=unix,dos,mac " Use Unix as the standard file type
