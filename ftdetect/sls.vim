@@ -1,2 +1,2 @@
-au BufNewFile,BufRead *.sls set ft=sls
+au BufNewFile,BufRead *.sls,*.jinja,*.jinja2 set ft=sls
 
