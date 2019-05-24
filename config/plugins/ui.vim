@@ -41,6 +41,9 @@ endfunction
 
 " Undo tree!
 let plug.undotree = {'from': "mbbill/undotree", "on_cmd": "UndotreeToggle"}
+function plug.undotree.hook_add() dict
+	let g:undotree_SplitWidth = 18
+endfunction
 
 " Indent guides
 let plug.indentguides = {'from': "nathanaelkane/vim-indent-guides"}
