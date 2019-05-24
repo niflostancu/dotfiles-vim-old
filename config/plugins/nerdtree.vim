@@ -10,9 +10,9 @@ function plug.nerdtree.hook_add() dict
 	Shortcut (NERDTree) Toggle
 		\ noremap <silent> <F3> :NERDTreeToggle<CR>
 	Shortcut (NERDTree) Toggle (alt)
-	  \ noremap <silent> [denite]e :NERDTreeToggle<CR>
+	  \ noremap <silent> [find]e :NERDTreeToggle<CR>
 	Shortcut (NERDTree) Find current file
-		\ noremap <silent> [denite]a :NERDTreeFind<CR>
+		\ noremap <silent> [find]a :NERDTreeFind<CR>
 
 endfunction
 

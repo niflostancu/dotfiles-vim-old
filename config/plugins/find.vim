@@ -1,4 +1,4 @@
-" Objects listing (i.e. denite, fzf) plugins
+" Object finding plugins (i.e. denite, fzf)
 let plug = g:user_plugins
 
 " Include the plugins
@@ -17,31 +17,31 @@ endfunction
 function! plug.denite.hook_add() dict
 	" Denite shortcuts
 	Shortcut (Denite) resume
-		\ nnoremap <silent> [denite]r :<C-u>Denite -resume -refresh<CR>
+		\ nnoremap <silent> [find]r :<C-u>Denite -resume -refresh<CR>
 	Shortcut (Denite) find files (recursive)
-		\ nnoremap <silent> [denite]F :<C-u>Denite file_rec<CR>
+		\ nnoremap <silent> [find]F :<C-u>Denite file_rec<CR>
 	Shortcut (Denite) switch buffer / most recently opened
-		\ nnoremap <silent> [denite]B :<C-u>Denite buffer file_old -default-action=switch<CR>
+		\ nnoremap <silent> [find]B :<C-u>Denite buffer file_old -default-action=switch<CR>
 	Shortcut (Denite) change directory
-		\ nnoremap <silent> [denite]d :<C-u>Denite directory_rec -default-action=cd<CR>
+		\ nnoremap <silent> [find]d :<C-u>Denite directory_rec -default-action=cd<CR>
 	Shortcut (Denite) show registers
-		\ nnoremap <silent> [denite]v :<C-u>Denite register -buffer-name=register<CR>
+		\ nnoremap <silent> [find]v :<C-u>Denite register -buffer-name=register<CR>
 	Shortcut (Denite) open location list
-		\ nnoremap <silent> [denite]l :<C-u>Denite location_list -buffer-name=list<CR>
+		\ nnoremap <silent> [find]l :<C-u>Denite location_list -buffer-name=list<CR>
 	Shortcut (Denite) open quickfix
-		\ nnoremap <silent> [denite]q :<C-u>Denite quickfix -buffer-name=list<CR>
+		\ nnoremap <silent> [find]q :<C-u>Denite quickfix -buffer-name=list<CR>
 	Shortcut (Denite) grep files
-		\ nnoremap <silent> [denite]g :<C-u>Denite grep<CR>
+		\ nnoremap <silent> [find]g :<C-u>Denite grep<CR>
 	Shortcut (Denite) jump to
-		\ nnoremap <silent> [denite]j :<C-u>Denite jump change file_point<CR>
+		\ nnoremap <silent> [find]j :<C-u>Denite jump change file_point<CR>
 	Shortcut (Denite) show outline
-		\ nnoremap <silent> [denite]o :<C-u>Denite outline<CR>
+		\ nnoremap <silent> [find]o :<C-u>Denite outline<CR>
 	Shortcut (Denite) find help
-		\ nnoremap <silent> [denite]h :<C-u>Denite help<CR>
+		\ nnoremap <silent> [find]h :<C-u>Denite help<CR>
 	Shortcut (Denite) find lines in current buffer
-		\ nnoremap <silent> [denite]/ :<C-u>Denite line<CR>
+		\ nnoremap <silent> [find]/ :<C-u>Denite line<CR>
 	Shortcut (Denite) find lines containing cursorword
-		\ nnoremap <silent> [denite]* :<C-u>DeniteCursorWord line<CR>
+		\ nnoremap <silent> [find]* :<C-u>DeniteCursorWord line<CR>
 endfunction
 
 function! plug.fzfvim.hook_add() dict
@@ -49,13 +49,13 @@ function! plug.fzfvim.hook_add() dict
 
 	" FZF shortcuts
 	Shortcut (FZF) Files
-		\ nnoremap <silent> [denite]f :<C-u>Files<CR>
+		\ nnoremap <silent> [find]f :<C-u>Files<CR>
 	Shortcut (FZF) Buffers
-		\ nnoremap <silent> [denite]b :<C-u>Buffers<CR>
+		\ nnoremap <silent> [find]b :<C-u>Buffers<CR>
 	Shortcut (FZF) Tags (current word)
-		\ nnoremap <silent> [denite]; :<C-u>Tags<CR>
+		\ nnoremap <silent> [find]; :<C-u>Tags<CR>
 	Shortcut (FZF) Tags (current word)
-		\ nnoremap <silent> [denite]] :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
+		\ nnoremap <silent> [find]] :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
 endfunction
 
 function! plug.fzfvim.hook_source() dict

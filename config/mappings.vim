@@ -29,9 +29,9 @@ Shortcut (Shortcut) show menu
 Shortcut (Shortcut) fallback to menu on partial entry
   \ noremap <silent> <Leader> :Shortcuts<Return>
 
-" Mappings for denite / fuzzy searchers
-nnoremap [denite] <Nop>
-nmap ; [denite]
+" Mappings for fuzzy finding tools
+nnoremap [find] <Nop>
+nmap ; [find]
 
 " Window mappings
 nnoremap [Window] <Nop>
@@ -47,5 +47,15 @@ Shortcut (window) make the current window the only one
   \ nnoremap <silent> [Window]o  :<C-u>only<CR>
 Shortcut (window) close the current window
   \ nnoremap <silent> [Window]c  :close<CR>
+
+" Last active tab switching
+if !exists('g:lasttab')
+  let g:lasttab = 1
+endif
+augroup UserAuto
+	au TabLeave * let g:lasttab = tabpagenr()
+augroup END
+Shortcut (tab) switch to last tab
+  \ nnoremap <silent> <Leader>t  :exe "tabn " . g:lasttab<CR>
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
