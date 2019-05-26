@@ -1,5 +1,5 @@
 " Misc plugins
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("misc")
 
 " Per-project (local) configuration files
 let plug.localrc = {'from': "thinca/vim-localrc"}

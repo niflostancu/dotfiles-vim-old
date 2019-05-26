@@ -1,5 +1,5 @@
 " Object finding plugins (i.e. denite, fzf)
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("find")
 
 " Include the plugins
 let plug.denite = {'from': "Shougo/denite.nvim", "on_cmd": "Denite"}

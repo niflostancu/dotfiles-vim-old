@@ -1,5 +1,5 @@
 " Plugins for PHP
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("lang/php")
 
 " PHP Syntax
 let plug.php = {'from': "StanAngeloff/php.vim", "on_ft": "php"}

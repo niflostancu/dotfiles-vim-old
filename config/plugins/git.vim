@@ -1,5 +1,5 @@
 " Git integration plugins
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("git")
 
 let plug.gina = {'from': "lambdalisue/gina.vim", "on_cmd": "Gina"}
 function plug.gina.hook_add() dict

@@ -1,5 +1,5 @@
 " Plugins for configuration files
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("lang/config_files")
 
 " Dockerfiles
 let plug.dockerfile = {'from': "ekalinin/Dockerfile.vim", "on_ft": ["Dockerfile", "docker-compose"]}

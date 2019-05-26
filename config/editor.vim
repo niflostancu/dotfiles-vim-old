@@ -4,11 +4,6 @@
 
 " General {{{
 
-" AutoCmd group
-augroup UserAuto
-	autocmd!
-augroup END
-
 set hidden                   " Turn on hidden buffers (allows having multiple files open)
 set modeline                 " Automatically use modeline settings from files
 set fileformats=unix,dos,mac " Use Unix as the standard file type
@@ -22,9 +17,9 @@ set synmaxcol=1000           " Don't syntax highlight long lines
 set history=2000
 
 " Highlight the line under the cursor
-au UserAuto WinLeave * set nocursorline
-au UserAuto WinEnter * set cursorline
-au UserAuto BufEnter * syntax sync fromstart
+au VimCfg WinLeave * set nocursorline
+au VimCfg WinEnter * set cursorline
+au VimCfg BufEnter * syntax sync fromstart
 
 " Auto-formatting options
 set formatoptions+=1         " Don't break lines after a one-letter word
@@ -184,13 +179,13 @@ set shortmess+=F
 
 " FastFold
 " Credits: https://github.com/Shougo/shougo-s-github
-autocmd UserAuto TextChangedI,TextChanged *
+autocmd VimCfg TextChangedI,TextChanged *
 	\ if &l:foldenable && &l:foldmethod !=# 'manual' |
 	\   let b:foldmethod_save = &l:foldmethod |
 	\   let &l:foldmethod = 'manual' |
 	\ endif
 
-autocmd UserAuto BufWritePost *
+autocmd VimCfg BufWritePost *
 	\ if &l:foldmethod ==# 'manual' && exists('b:foldmethod_save') |
 	\   let &l:foldmethod = b:foldmethod_save |
 	\   execute 'normal! zx' |

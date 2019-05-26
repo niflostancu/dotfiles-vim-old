@@ -1,5 +1,5 @@
 " Plugins for Vimscript
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("lang/vim")
 
 " Enhanced syntax
 let plug.vim_syntax = {'from': "vim-jp/syntax-vim-ex", "on_ft": "vim"}

@@ -1,5 +1,5 @@
 " Generic make plugins
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("make")
 
 " Neomake (disabled)
 let plug.neomake = {'from': "neomake/neomake", "on_cmd": "Neomake", "if": 0}

@@ -1,5 +1,5 @@
 " Autocompletion plugins
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("autocomplete")
 
 " Context file type library
 let plug.context_filetype = {'from': "Shougo/context_filetype.vim"}
@@ -57,7 +57,7 @@ function plug.neosnippet.hook_source() dict
 	let g:neosnippet#enable_snipmate_compatibility = 1
 	let g:neosnippet#enable_completed_snippet = 1
 	let g:neosnippet#expand_word_boundary = 1
-	autocmd UserAuto InsertLeave * NeoSnippetClearMarkers
+	autocmd VimCfg InsertLeave * NeoSnippetClearMarkers
 endfunction
 
 " Echo function docs in cmd line

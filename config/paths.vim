@@ -1,8 +1,5 @@
 " Sets paths for storing plugins / cache files
 
-let $VIM_CONFIG = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
-let $VIM_CACHE = expand(($XDG_CACHE_HOME ? $XDG_CACHE_HOME : '~/.cache').'/nvim')
-
 set undofile swapfile nobackup
 set directory=$VIM_CACHE/swap//,$VIM_CACHE,~/tmp,/var/tmp,/tmp
 set undodir=$VIM_CACHE/undo//,$VIM_CACHE,~/tmp,/var/tmp,/tmp
@@ -32,9 +29,6 @@ if ! isdirectory(expand('$VIM_CACHE/undo'))
 endif
 if ! isdirectory(expand('$VIM_CACHE/backup'))
   call mkdir(expand('$VIM_CACHE/backup'))
-endif
-if ! isdirectory(expand('$VIM_CACHE/dein'))
-  call mkdir(expand('$VIM_CACHE/dein'), 'p')
 endif
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :

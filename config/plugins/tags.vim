@@ -1,5 +1,5 @@
 " CTags-related plugins & config
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("tags")
 
 " GutenTags - update the tags database while editing files
 let plug.gutentags = {'from': "ludovicchabant/vim-gutentags"}

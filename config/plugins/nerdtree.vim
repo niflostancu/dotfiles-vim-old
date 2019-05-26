@@ -1,5 +1,5 @@
 " UI: NerdTree configuration
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("nerdtree")
 
 let plug.nerdtree = {'from': "scrooloose/nerdtree", "on_map": {"n": "<Plug>"}, 
 			\ "on_cmd": "NERDTree"}
@@ -33,7 +33,7 @@ function plug.nerdtree.hook_source() dict
 				\ '\.DS_Store$', '\.sass-cache$', '__pycache__$', '\.egg-info$', '\.cache$'
 				\ ]
 
-	autocmd UserAuto FileType nerdtree call s:nerdtree_settings()
+	autocmd VimCfg FileType nerdtree call s:nerdtree_settings()
 endfunction
 
 function plug.nerdtree.hook_post_source() dict

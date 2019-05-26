@@ -1,5 +1,5 @@
 " Plugins for JavaScript
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("lang/javascript")
 
 let js_ft_all = ["javascript", "jsx", "javascript.jsx"]
 

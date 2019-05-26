@@ -1,5 +1,5 @@
 " Plugins for text languages (e.g. Markdown)
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("lang/text")
 
 " Tabular data formatting
 let plug.tabular = {'from': "godlygeek/tabular", "on_cmd": "Tabularize"}

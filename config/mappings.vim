@@ -52,9 +52,8 @@ Shortcut (window) close the current window
 if !exists('g:lasttab')
   let g:lasttab = 1
 endif
-augroup UserAuto
-	au TabLeave * let g:lasttab = tabpagenr()
-augroup END
+
+autocmd VimCfg TabLeave * let g:lasttab = tabpagenr()
 Shortcut (tab) switch to last tab
   \ nnoremap <silent> <Leader>t  :exe "tabn " . g:lasttab<CR>
 

@@ -1,5 +1,5 @@
 " Session plugins
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("session")
 
 " Per-project (local) configuration files
 let plug.obsession = {'from': "tpope/vim-obsession.git"}

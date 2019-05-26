@@ -1,5 +1,5 @@
 " UI-related plugins (e.g. theme, status line etc.)
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("ui")
 
 " Themes:
 let plug.theme_one = {'from': "rakr/vim-one"}
@@ -8,6 +8,7 @@ let plug.theme_onedark ={'from': "joshdick/onedark.vim"}
 " Airline (custom status / tab bar)
 let plug.airline = {'from': "vim-airline/vim-airline"}
 function plug.airline.hook_add() dict
+	let g:airline_powerline_fonts = 1
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline#extensions#taboo#enabled = 1
 	let g:airline#extensions#tabline#show_tabs = 1

@@ -1,5 +1,5 @@
 " Hacking tools
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("hacking")
 
 " Vinarise - hex editor
 let plug.vinarise = {'from': "Shougo/vinarise.vim", "on_cmd": "Vinarise"}

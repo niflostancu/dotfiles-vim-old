@@ -1,5 +1,5 @@
 " Plugins for better editing
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("editor")
 
 " Smart file indent autodetection
 let plug.sleuth = {'from': "niflostancu/vim-sleuth"}
@@ -20,7 +20,7 @@ function! plug.cursorword.hook_add() dict
 	" Disable it by default
 	let g:cursorword=0
 	" Disable for special buffers
-	autocmd UserAuto FileType denite,qf,nerdtree let b:cursorword=0
+	autocmd VimCfg FileType denite,qf,nerdtree let b:cursorword=0
 endfunction
 
 " Commenting plugin

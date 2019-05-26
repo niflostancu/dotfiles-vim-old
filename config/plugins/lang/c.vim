@@ -1,5 +1,5 @@
 " Plugins for C-based languages
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("lang/c")
 
 " Clang autocompletion for deoplete
 let plug.deoplete_clangx = {'from': "Shougo/deoplete-clangx"}

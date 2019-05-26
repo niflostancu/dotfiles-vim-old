@@ -1,5 +1,5 @@
 " Plugins for HTML
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("lang/html")
 
 " HTML5 syntax and omnicomplete
 let plug.html5 = {'from': "othree/html5.vim", "on_ft": "html"}

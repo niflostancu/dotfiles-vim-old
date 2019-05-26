@@ -6,17 +6,22 @@
 "
 " Requires Neovim, python3 etc.
 
-" First, include the utility library
-let s:path = fnamemodify(expand('<sfile>:p'), ':h')
-execute 'source' fnameescape(s:path . '/config/utils.vim')
-
-" Also include this config dir to runtimepath
+" Include this dir to runtimepath
+let s:path = expand('<sfile>:p:h')
 execute 'set runtimepath+=' . fnameescape(s:path)
 
-call User_SourceCfg("paths.vim")
-call User_SourceCfg("editor.vim")
-call User_SourceCfg("plugin_manager.vim")
-call User_SourceCfg("theme.vim")
+" Init config and load
+call vimconf#init()
+
+call vimconf#plugin#source()
+call vimconf#source_optional("plugins.local.vim")
+call vimconf#plugin#source_theme("one")
+
+call vimconf#plugin#load()
+
+" call vimconf#source("stock_plugins.vim")
+call vimconf#source("paths.vim")
+call vimconf#source("editor.vim")
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
 

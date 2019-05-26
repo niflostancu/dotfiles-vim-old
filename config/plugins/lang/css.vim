@@ -1,5 +1,5 @@
 " Plugins for CSS
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("lang/css")
 
 " Syntaxes for CSS / SCSS / LESS
 let plug.css_syntax = {'from': "hail2u/vim-css3-syntax", "on_ft": "css"}

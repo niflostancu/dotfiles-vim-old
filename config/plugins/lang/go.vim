@@ -1,5 +1,5 @@
 " Plugins for Golang
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("lang/go")
 
 " GO Syntax / helpers
 let plug.go = {'from': "fatih/vim-go", "on_ft": "go"}

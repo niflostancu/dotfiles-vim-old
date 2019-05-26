@@ -1,5 +1,5 @@
 " Plugins for Python
-let plug = g:user_plugins
+let plug = vimconf#plugin#register("lang/python")
 
 " Python syntax, indent & helpers
 let plug.python = {'from': "vim-python/python-syntax", "on_ft": "python"}
@@ -14,7 +14,7 @@ function plug.deoplete_jedi.hook_source() dict
 	let g:deoplete#sources#jedi#show_docstring = 1
 	let g:deoplete#sources#jedi#short_types = 1
 
-	autocmd UserAuto FileType python setlocal omnifunc=
+	autocmd VimCfg FileType python setlocal omnifunc=
 endfunction
 
 " Extends the % motion
