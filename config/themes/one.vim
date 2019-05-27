@@ -6,7 +6,7 @@ let plug = vimconf#plugin#register("theme")
 let plug.theme_one = {'from': "rakr/vim-one"}
 let plug.theme_onedark ={'from': "joshdick/onedark.vim"} 
 
-function plug.theme_one.hook_source() dict
+function plug.theme_one.hook_add() dict
 	" Enable 256 color terminal
 	set t_Co=256
 
