@@ -19,27 +19,27 @@ function! plug.denite.hook_add() dict
 	Shortcut (Denite) resume
 		\ nnoremap <silent> [find]r :<C-u>Denite -resume -refresh<CR>
 	Shortcut (Denite) find files (recursive)
-		\ nnoremap <silent> [find]F :<C-u>Denite file_rec<CR>
+		\ nnoremap <silent> [find]F :<C-u>Denite -start-filter file/rec<CR>
 	Shortcut (Denite) switch buffer / most recently opened
-		\ nnoremap <silent> [find]B :<C-u>Denite buffer file_old -default-action=switch<CR>
+		\ nnoremap <silent> [find]B :<C-u>Denite -start-filter buffer file/old -default-action=switch<CR>
 	Shortcut (Denite) change directory
-		\ nnoremap <silent> [find]d :<C-u>Denite directory_rec -default-action=cd<CR>
+		\ nnoremap <silent> [find]d :<C-u>Denite -start-filter directory_rec -default-action=cd<CR>
 	Shortcut (Denite) show registers
-		\ nnoremap <silent> [find]v :<C-u>Denite register -buffer-name=register<CR>
+		\ nnoremap <silent> [find]v :<C-u>Denite -start-filter register -buffer-name=register<CR>
 	Shortcut (Denite) open location list
-		\ nnoremap <silent> [find]l :<C-u>Denite location_list -buffer-name=list<CR>
+		\ nnoremap <silent> [find]l :<C-u>Denite -start-filter location_list -buffer-name=list<CR>
 	Shortcut (Denite) open quickfix
-		\ nnoremap <silent> [find]q :<C-u>Denite quickfix -buffer-name=list<CR>
+		\ nnoremap <silent> [find]q :<C-u>Denite -start-filter quickfix -buffer-name=list<CR>
 	Shortcut (Denite) grep files
 		\ nnoremap <silent> [find]g :<C-u>Denite grep<CR>
 	Shortcut (Denite) jump to
-		\ nnoremap <silent> [find]j :<C-u>Denite jump change file_point<CR>
+		\ nnoremap <silent> [find]j :<C-u>Denite -start-filter jump change file/point<CR>
 	Shortcut (Denite) show outline
-		\ nnoremap <silent> [find]o :<C-u>Denite outline<CR>
+		\ nnoremap <silent> [find]o :<C-u>Denite -start-filter outline<CR>
 	Shortcut (Denite) find help
-		\ nnoremap <silent> [find]h :<C-u>Denite help<CR>
+		\ nnoremap <silent> [find]h :<C-u>Denite -start-filter help<CR>
 	Shortcut (Denite) find lines in current buffer
-		\ nnoremap <silent> [find]/ :<C-u>Denite line<CR>
+		\ nnoremap <silent> [find]/ :<C-u>Denite -start-filter line<CR>
 	Shortcut (Denite) find lines containing cursorword
 		\ nnoremap <silent> [find]* :<C-u>DeniteCursorWord line<CR>
 endfunction
@@ -71,9 +71,11 @@ function! plug.fzfvim.hook_source() dict
 endfunction
 
 function! plug.denite.hook_source() dict
-	" Denite configuration
+
+	" Default configuration
 	call denite#custom#option('_', {
 				\ 'prompt': 'λ:',
+				\ 'statusline': v:false,
 				\ 'empty': 0,
 				\ 'winheight': 16,
 				\ 'source_names': 'short',
@@ -82,84 +84,101 @@ function! plug.denite.hook_source() dict
 				\ 'auto-resume': 1,
 				\ })
 
-	call denite#custom#option('list', {})
+	" Define mappings
+	autocmd FileType denite call s:custom_denite_settings()
+	autocmd FileType denite-filter call s:custom_denite_filter_settings()
 
-	" MATCHERS
-	" Default is 'matcher_fuzzy'
-	call denite#custom#source('tag', 'matchers', ['matcher_substring'])
-	if has('nvim') && &runtimepath =~# '\/cpsm'
-		call denite#custom#source(
-					\ 'buffer,file_mru,file_old,file_rec,grep,mpc,line',
-					\ 'matchers', ['matcher_cpsm', 'matcher_fuzzy'])
-	endif
-
-	" CONVERTERS
 	call denite#custom#source(
-				\ 'buffer,file_mru,file_old',
-				\ 'converters', ['converter_relative_word'])
+				\ 'file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
+	"call denite#custom#source(
+	"			\ 'file/rec', 'matchers', ['matcher/cpsm'])
+
+	call denite#custom#source(
+				\ 'file/rec', 'sorters', ['sorter/sublime'])
+
+	" Change default action.
+	"call denite#custom#kind('file', 'default_action', 'split')
 
 	" FIND and GREP COMMANDS
-	if executable('ag')
-		" The Silver Searcher
-		call denite#custom#var('file_rec', 'command',
-					\ ['ag', '--hidden', '--nocolor', '--nogroup', '-g', ''])
+	" call denite#custom#source('grep', 'args', ['', '', '!'])
 
+	if executable('ag')
+		" Ag command on grep source
+		call denite#custom#var('grep', 'command', ['ag'])
 		" Setup ignore patterns in your .agignore file!
 		" https://github.com/ggreer/the_silver_searcher/wiki/Advanced-Usage
-
-		call denite#custom#var('grep', 'command', ['ag'])
+		call denite#custom#var('grep', 'default_opts',
+					\ ['--ignore', '.tags', '-i', '--vimgrep', '--hidden'])
 		call denite#custom#var('grep', 'recursive_opts', [])
 		call denite#custom#var('grep', 'pattern_opt', [])
 		call denite#custom#var('grep', 'separator', ['--'])
 		call denite#custom#var('grep', 'final_opts', [])
-		call denite#custom#var('grep', 'default_opts',
-					\ [ '--ignore', '.tags', '-i', '--vimgrep', '--hidden' ])
+
+		" Change file/rec command.
+		call denite#custom#var('file/rec', 'command',
+					\ ['ag', '--follow', '--hidden', '--nocolor', '--nogroup', '-g', ''])
 
 	elseif executable('ack')
-		" Ack command
+		" Ack command on grep source
 		call denite#custom#var('grep', 'command', ['ack'])
+		call denite#custom#var('grep', 'default_opts',
+					\ ['--ackrc', $HOME.'/.config/ackrc', '-H', '-i',
+					\  '--nopager', '--nocolor', '--nogroup', '--column'])
 		call denite#custom#var('grep', 'recursive_opts', [])
 		call denite#custom#var('grep', 'pattern_opt', ['--match'])
 		call denite#custom#var('grep', 'separator', ['--'])
 		call denite#custom#var('grep', 'final_opts', [])
-		call denite#custom#var('grep', 'default_opts',
-					\ ['--ackrc', $HOME.'/.config/ackrc', '-H',
-					\ '--nopager', '--nocolor', '--nogroup', '--column'])
 	endif
 
-	" KEY MAPPINGS
-	let insert_mode_mappings = [
-				\  ['jj', '<denite:enter_mode:normal>', 'noremap'],
-				\  ['<Esc>', '<denite:quit>', 'noremap'],
-				\  ['<C-j>', '<denite:move_to_next_line>', 'noremap'],
-				\  ['<C-k>', '<denite:move_to_previous_line>', 'noremap'],
-				\  ['<Up>', '<denite:move_to_previous_line>', 'noremap'],
-				\  ['<Down>', '<denite:move_to_next_line>', 'noremap'],
-				\  ['<C-Up>', '<denite:assign_previous_text>', 'noremap'],
-				\  ['<C-Down>', '<denite:assign_next_text>', 'noremap'],
-				\  ['<C-R>', '<denite:redraw>', 'noremap'],
-				\ ]
+	" Define alias
+	call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+	call denite#custom#var('file/rec/git', 'command',
+				\ ['git', 'ls-files', '-co', '--exclude-standard'])
 
-	let normal_mode_mappings = [
-				\  ["'", '<denite:toggle_select_down>', 'noremap'],
-				\  ['<C-j>', '<denite:move_to_next_line>', 'noremap'],
-				\  ['<C-k>', '<denite:move_to_previous_line>', 'noremap'],
-				\  ['gg', '<denite:move_to_first_line>', 'noremap'],
-				\  ['st', '<denite:do_action:tabopen>', 'noremap'],
-				\  ['sg', '<denite:do_action:vsplit>', 'noremap'],
-				\  ['sv', '<denite:do_action:split>', 'noremap'],
-				\  ['sc', '<denite:quit>', 'noremap'],
-				\  ['r', '<denite:redraw>', 'noremap'],
-				\  ['<Esc>', '<denite:quit>', 'noremap'],
-				\ ]
+	" Change ignore_globs
+	"call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+	"			\ [ '.git/', '.ropeproject/', '__pycache__/',
+	"			\   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
 
-	for m in insert_mode_mappings
-		call denite#custom#map('insert', m[0], m[1], m[2])
-	endfor
-	for m in normal_mode_mappings
-		call denite#custom#map('normal', m[0], m[1], m[2])
-	endfor
+endfunction
 
+" Custom denite mappings
+function! s:custom_denite_settings() abort
+	nnoremap <silent><buffer> <Up> k
+	nnoremap <silent><buffer> <Down> j
+	nnoremap <silent><buffer><expr> <CR>
+				\ denite#do_map('do_action')
+	nnoremap <silent><buffer><expr> a
+				\ denite#do_map('choose_action')
+	nnoremap <silent><buffer><expr> d
+				\ denite#do_map('do_action', 'delete')
+	nnoremap <silent><buffer><expr> p
+				\ denite#do_map('do_action', 'preview')
+	nnoremap <silent><buffer><expr> q
+				\ denite#do_map('quit')
+	nnoremap <silent><buffer><expr> i
+				\ denite#do_map('open_filter_buffer')
+	nnoremap <silent><buffer><expr> <Space>
+				\ denite#do_map('toggle_select').'j'
+endfunction
+
+function! s:custom_denite_filter_settings() abort
+	call deoplete#custom#buffer_option('auto_complete', v:false)
+
+	" Make Enter do the default action in filter mode
+	inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+
+	imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+	imap <silent><buffer> <C-c> <Plug>(denite_filter_quit)
+	" Move using ctrl+j / k and arrows
+	inoremap <silent><buffer> <C-j>
+		\ <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+	inoremap <silent><buffer> <C-k>
+		\ <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+	inoremap <silent><buffer> <Down>
+		\ <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+	inoremap <silent><buffer> <Up>
+		\ <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
 endfunction
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
