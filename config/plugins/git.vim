@@ -35,6 +35,12 @@ function plug.gina.hook_source() dict
 	call gina#custom#command#option('stash list', '--group', 'short2')
 endfunction
 
+" Fugitive (required for more advanced git browsing)
+let plug.fugitive = {'from': 'tpope/vim-fugitive', "on_cmd": ["Gstatus", "Git"]}
+
+" Flog - git browser
+let plug.flog = {'from': 'rbong/vim-flog', "on_cmd": ["Flog", "Flogsplit"]}
+
 " Enhanced commit message editing
 let plug.committia = {'from': "rhysd/committia.vim", "on_path": "COMMIT_EDITMSG",
 		\ "hook_source": "let g:committia_min_window_width = 70"}
