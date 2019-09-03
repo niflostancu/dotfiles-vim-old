@@ -48,6 +48,7 @@ let plug.committia = {'from': "rhysd/committia.vim", "on_path": "COMMIT_EDITMSG"
 " Git diff gutter
 let plug.gitgutter = {'from': "airblade/vim-gitgutter"}
 
+" GH Line - Open Github / Bitbucket / selfhosted git website
+let plug.gitghline = {'from': "ruanyl/vim-gh-line"}
+
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
-
-
