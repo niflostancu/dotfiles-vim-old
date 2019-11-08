@@ -29,7 +29,8 @@ endfunction
 let plug.airline_themes = {'from': "vim-airline/vim-airline-themes"}
 
 " See the contents of the registers ('@' / '"')
-let plug.peekaboo = {'from': "junegunn/vim-peekaboo"}
+" Temporary workaround: use deathlyfrantic/vim-peekaboo with bugfix patch
+let plug.peekaboo = {'from': "deathlyfrantic/vim-peekaboo", 'rev': 'patch-1'}
 
 " Seamless TMux navigation
 let plug.tmux_navigator = {'from': "christoomey/vim-tmux-navigator"}
