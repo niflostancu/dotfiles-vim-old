@@ -11,5 +11,7 @@ let plug.css_color = {'from': "ap/vim-css-color", "on_ft": ["css", "scss", "sass
 " CSS omnicompletion (use with deoplete)
 let plug.csscomplete = {'from': "othree/csscomplete.vim", "on_ft": "css"}
 
+let plug.styled_components = {'from': 'styled-components/vim-styled-components', "on_ft": "javascript"}
+
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
 
