@@ -30,6 +30,9 @@ function! plug.markdown_gh.hook_source() dict
 	let g:gfm_syntax_enable_filetypes = ['markdown']
 endfunction
 
+" DokuWiki editor plugin
+let plug.dokuwiki = {'from': 'nblock/vim-dokuwiki'}
+
 " LaTeX FTW
 let plug.vimtex = {'from': 'lervag/vimtex', "on_ft": ["plaintex", "tex", "bib"]}
 function! plug.vimtex.hook_add() dict
