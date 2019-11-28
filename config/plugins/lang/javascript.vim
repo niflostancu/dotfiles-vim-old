@@ -7,7 +7,6 @@ let js_ft_all = ["javascript", "jsx", "javascript.jsx"]
 let plug.javascript = {'from': "pangloss/vim-javascript", "on_ft": js_ft_all}
 function! plug.javascript.hook_source() dict
 	let g:javascript_plugin_jsdoc = 1
-	let g:javascript_plugin_flow = 1
 	highlight! link jsFutureKeys PreProc
 endfunction
 
