@@ -34,6 +34,11 @@ function plug.deoplete_tern.hook_add() dict
 
 endfunction
 
+" TypeScript
+let plug.typescript = {'from': "leafgarland/typescript-vim"}
+" TypeScript React
+let plug.typescript_react = {'from': "peitalin/vim-jsx-typescript"}
+
 " Pretty JSX syntax
 let plug.jsxpretty = {'from': "MaxMEllon/vim-jsx-pretty", "on_ft": js_ft_all}
 " JSDoc creation
