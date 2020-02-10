@@ -35,7 +35,7 @@ function plug.deoplete.hook_add() dict
 	inoremap <silent><expr> <TAB>
 				\ pumvisible() ? "\<C-n>" :
 				\ <SID>check_back_space() ? "\<TAB>" :
-				\ deoplete#mappings#manual_complete()
+				\ deoplete#manual_complete()
 
 endfunction
 
@@ -61,10 +61,13 @@ function plug.neosnippet.hook_source() dict
 endfunction
 
 " Echo function docs in cmd line
-let plug.echodoc = {'from': "Shougo/echodoc.vim", "on_event": "CompleteDone"}
-function plug.echodoc.hook_post_source() dict
-	call echodoc#enable()
+let plug.echodoc = {'from': "Shougo/echodoc.vim"}
+function plug.echodoc.hook_add() dict
+	let g:echodoc#enable_at_startup = 1
+	let g:echodoc#type = 'floating'
 endfunction
+
+"let plug.float_preview = {'from': "ncm2/float-preview.nvim"}
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
 
