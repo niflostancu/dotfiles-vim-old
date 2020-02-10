@@ -23,7 +23,33 @@ function plug.airline.hook_add() dict
 	let g:airline#extensions#tabline#fnamemod = ':t'
   let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
-	let g:airline_theme="one"
+	let g:airline_section_z = airline#section#create([
+				\ 'windowswap', 'obsession', '%3p%%',
+				\ 'linenr', 'maxlinenr', ':%c%V'])
+
+	let g:airline#extensions#hunks#enabled = 0
+	let g:airline#extensions#branch#enabled = 1
+	let g:airline#extensions#branch#format = 2
+	let g:airline#extensions#branch#displayed_head_limit = 15
+
+	let g:airline#extensions#whitespace#enabled = 0
+
+	let g:airline_theme = "one"
+
+  let g:airline_mode_map = {} " see source for the defaults
+
+  " or copy paste the following into your vimrc for shortform text
+  let g:airline_mode_map = {
+      \ '__': '-',
+      \ 'c': 'CHG',
+      \ 'i': 'INS', 'ic': 'INS', 'ix': 'INS',
+      \ 'multi': 'MUL',
+      \ 'n': 'NORM', 'ni': 'NORM', 'no': 'NORM',
+      \ 'R': 'REPL', 'Rv': 'REPL',
+      \ 's': 'S', 'S': 'S', '': 'S',
+      \ 't': 'T',
+      \ 'v': 'VIS', 'VIS': 'VIS', '': 'VIS',
+      \ }
 endfunction
 
 let plug.airline_themes = {'from': "vim-airline/vim-airline-themes"}
