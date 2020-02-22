@@ -21,7 +21,7 @@ function plug.ale.hook_add() dict
 	let g:ale_sign_warning = '⚠'
 	let g:ale_sign_info = 'ℹ'
 	let g:ale_hover_to_preview = 1
-	let g:ale_echo_msg_format = '[%linter%][%severity%][%code%] %s'
+	let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 endfunction
 

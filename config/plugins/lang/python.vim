@@ -1,6 +1,14 @@
 " Plugins for Python
 let plug = vimconf#plugin#register("lang/python")
 
+" ALE linters
+if !exists("g:ale_linters")
+	let g:ale_linters = {}
+endif
+let g:ale_linters = extend(g:ale_linters, {'python': ['pyls']})
+
+echo g:ale_linters
+
 " Python syntax, indent & helpers
 let plug.python = {'from': "vim-python/python-syntax", "on_ft": "python"}
 let plug.python_indent = {'from': "Vimjas/vim-python-pep8-indent", "on_ft": "python"}
