@@ -143,42 +143,50 @@ function! plug.denite.hook_source() dict
 endfunction
 
 " Custom denite mappings
+
 function! s:custom_denite_settings() abort
-	nnoremap <silent><buffer> <Up> k
-	nnoremap <silent><buffer> <Down> j
-	nnoremap <silent><buffer><expr> <CR>
-				\ denite#do_map('do_action')
-	nnoremap <silent><buffer><expr> a
-				\ denite#do_map('choose_action')
-	nnoremap <silent><buffer><expr> d
-				\ denite#do_map('do_action', 'delete')
-	nnoremap <silent><buffer><expr> p
-				\ denite#do_map('do_action', 'preview')
-	nnoremap <silent><buffer><expr> q
-				\ denite#do_map('quit')
-	nnoremap <silent><buffer><expr> i
-				\ denite#do_map('open_filter_buffer')
-	nnoremap <silent><buffer><expr> <Space>
-				\ denite#do_map('toggle_select').'j'
+	" Window options
+	setlocal signcolumn=no cursorline
+
+	" Key mappings
+	nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+	nnoremap <silent><buffer><expr> i    denite#do_map('open_filter_buffer')
+	nnoremap <silent><buffer><expr> /    denite#do_map('open_filter_buffer')
+	nnoremap <silent><buffer><expr> dd   denite#do_map('do_action', 'delete')
+	nnoremap <silent><buffer><expr> p    denite#do_map('do_action', 'preview')
+	nnoremap <silent><buffer><expr> st   denite#do_map('do_action', 'tabopen')
+	nnoremap <silent><buffer><expr> sg   denite#do_map('do_action', 'vsplit')
+	nnoremap <silent><buffer><expr> sv   denite#do_map('do_action', 'split')
+	nnoremap <silent><buffer><expr> '    denite#do_map('quick_move')
+	nnoremap <silent><buffer><expr> q    denite#do_map('quit')
+	nnoremap <silent><buffer><expr> r    denite#do_map('redraw')
+	nnoremap <silent><buffer><expr> yy   denite#do_map('do_action', 'yank')
+	nnoremap <silent><buffer><expr> <Esc>   denite#do_map('quit')
+	nnoremap <silent><buffer><expr> <Tab>   denite#do_map('choose_action')
+	nnoremap <silent><buffer><expr><nowait> <Space> denite#do_map('toggle_select').'j'
 endfunction
 
 function! s:custom_denite_filter_settings() abort
+	" Window options
+	setlocal signcolumn=yes nocursorline nonumber norelativenumber
 	call deoplete#custom#buffer_option('auto_complete', v:false)
 
+	" Key mappings
+	nnoremap <silent><buffer><expr> <Esc>  denite#do_map('quit')
+	" inoremap <silent><buffer><expr> <Esc>  denite#do_map('quit')
+	nnoremap <silent><buffer><expr> q      denite#do_map('quit')
+	inoremap <silent><buffer><expr> <C-c>  denite#do_map('quit')
+	nnoremap <silent><buffer><expr> <C-c>  denite#do_map('quit')
+	inoremap <silent><buffer>       kk     <Esc><C-w>pk
+	nnoremap <silent><buffer>       kk     <C-w>pk
+	inoremap <silent><buffer>       jj     <Esc><C-w>pj
+	nnoremap <silent><buffer>       jj     <C-w>pj
+	inoremap <silent><buffer> <Down>       <Esc><C-w>pj
+	nnoremap <silent><buffer> <Down>       <C-w>pj
+	inoremap <silent><buffer> <Up>         <Esc><C-w>pk
+	nnoremap <silent><buffer> <Up>         <C-w>pj
 	" Make Enter do the default action in filter mode
 	inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-
-	imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
-	imap <silent><buffer> <C-c> <Plug>(denite_filter_quit)
-	" Move using ctrl+j / k and arrows
-	inoremap <silent><buffer> <C-j>
-		\ <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-	inoremap <silent><buffer> <C-k>
-		\ <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
-	inoremap <silent><buffer> <Down>
-		\ <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-	inoremap <silent><buffer> <Up>
-		\ <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
 endfunction
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
