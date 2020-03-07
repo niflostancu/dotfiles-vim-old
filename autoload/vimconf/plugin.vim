@@ -54,7 +54,7 @@ function! vimconf#plugin#load()
 	" Download & install dein if not already
 	if &runtimepath !~# '/dein.vim'
 		if ! isdirectory(dein_dir)
-			execute '!git clone https://github.com/Shougo/dein.vim' s:dein_dir
+			execute '!git clone https://github.com/Shougo/dein.vim' l:dein_dir
 		endif
 		execute 'set runtimepath+='.substitute(
 			\ fnamemodify(dein_dir, ':p') , '/$', '', '')
