@@ -1,6 +1,9 @@
 " UI-related plugins (e.g. theme, status line etc.)
 let plug = vimconf#plugin#register("ui")
 
+" Dein plugin manager UI :D 
+let plug.dein_ui = {'from': 'wsdjeg/dein-ui.vim'}
+
 " Themes:
 let plug.theme_one = {'from': "rakr/vim-one"}
 let plug.theme_onedark ={'from': "joshdick/onedark.vim"} 
