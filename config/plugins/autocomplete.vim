@@ -15,18 +15,17 @@ function plug.deoplete.hook_add() dict
 	let g:deoplete#enable_at_startup = 1
 
 	" Deoplete settings
-	let g:deoplete#ignore_sources = {}
+	call deoplete#custom#option('ignore_sources', {})
 
-	let g:deoplete#auto_complete_delay = 50
-	let g:deoplete#auto_refresh_delay = 500
-	let g:deoplete#enable_refresh_always = 0
-	let g:deoplete#enable_camel_case = 1
-	let g:deoplete#max_abbr_width = 35
-	let g:deoplete#max_menu_width = 20
-	let g:deoplete#skip_chars = ['(', ')', '<', '>']
+	call deoplete#custom#option('auto_complete_delay', 50)
+	call deoplete#custom#option('auto_refresh_delay', 500)
+	call deoplete#custom#option('enable_refresh_always', 0)
+	call deoplete#custom#option('enable_camel_case', 1)
+	call deoplete#custom#option('max_abbr_width', 35)
+	call deoplete#custom#option('max_menu_width', 80)
+	call deoplete#custom#option('skip_chars', ['(', ')', '<', '>'])
 
-	let g:deoplete#tag#cache_limit_size = 5000000
-	let g:deoplete#file#enable_buffer_path = 1
+	call deoplete#custom#var('file', 'enable_buffer_path', 1)
 
 	" Generic source tweaks
 	call deoplete#custom#source('buffer', 'rank', 9999)
