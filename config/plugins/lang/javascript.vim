@@ -1,7 +1,7 @@
 " Plugins for JavaScript
 let plug = vimconf#plugin#register("lang/javascript")
 
-let js_ft_all = ["javascript", "jsx", "javascript.jsx"]
+let js_ft_all = ["javascript", "jsx", "javascript.jsx", "typescript"]
 
 " Improved JS syntax & indent
 let plug.javascript = {'from': "pangloss/vim-javascript", "on_ft": js_ft_all}
