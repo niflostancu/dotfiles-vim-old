@@ -5,7 +5,7 @@ let plug = vimconf#plugin#register("autocomplete")
 let plug.context_filetype = {'from': "Shougo/context_filetype.vim"}
 
 " Deoplete - asynchronous autocompletion
-let plug.deoplete = {'from': "Shougo/deoplete.nvim"}
+let plug.deoplete = {'from': "Shougo/deoplete.nvim", "if": 0}
 
 function plug.deoplete.hook_done_update() dict
 	call dein#remote_plugins()
