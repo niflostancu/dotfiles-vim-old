@@ -14,5 +14,9 @@ endfunction
 " Execline shell script syntax
 let plug.execline = {'from': 'djpohly/vim-execline', "on_ft": "execline"}
 
+" Bash language server extension for CoC
+let plug.coc_sh = {'from': "josa42/coc-sh",
+			\ 'build': "yarn install --frozen-lockfile"}
+
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
 

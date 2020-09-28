@@ -10,33 +10,13 @@ function! plug.javascript.hook_source() dict
 	highlight! link jsFutureKeys PreProc
 endfunction
 
-" Language specific add hook
-function! plug.javascript.hook_add() dict
-	let g:ale_linter_aliases = {'html': ['javascript', 'html']}
-endfunction
+" Javascript / typescript language server extension for CoC
+let plug.coc_tsserver = {'from': "neoclide/coc-tsserver", 
+			\ 'build': "yarn install --frozen-lockfile"}
 
-" JS Parameter Complete
-let plug.jspc = {'from': "othree/jspc.vim", "on_ft": js_ft_all}
-
-" TernJS Deoplete Plugin
-let plug.deoplete_tern = {'from': "carlitux/deoplete-ternjs", "on_ft": js_ft_all}
-function plug.deoplete_tern.hook_add() dict
-	let g:deoplete#sources#ternjs#types = 1
-	let g:deoplete#sources#ternjs#docs = 1
-	let g:deoplete#sources#ternjs#timeout = 3
-
-	let g:deoplete#sources#ternjs#filetypes = [
-				\ 'jsx',
-				\ 'javascript.jsx',
-				\ 'vue',
-				\ 'javascript'
-				\ ]
-
-endfunction
-
-" TypeScript
+" TypeScript syntax
 let plug.typescript = {'from': "leafgarland/typescript-vim"}
-" TypeScript React
+" TypeScript React syntax
 let plug.typescript_react = {'from': "peitalin/vim-jsx-typescript"}
 
 " Pretty JSX syntax
@@ -49,11 +29,20 @@ let plug.nodejs = {'from': "moll/vim-node", "on_ft": js_ft_all}
 " Polymer / Lit-HTML Syntax
 let plug.polymer = {'from': "jonsmithers/vim-html-template-literals", "on_ft": js_ft_all}
 
-" JSON syntax
+" JSON / JSONC syntax
 let plug.json = {'from': "elzr/vim-json", "on_ft": "json"}
+let plug.jsonc = {'from': "kevinoid/vim-jsonc", "on_ft": "jsonc"}
 function! plug.json.hook_add() dict
 	" Disable JSON concealing
 	let g:vim_json_syntax_conceal = 0
 endfunction
+
+" JSON language server extension for CoC
+let plug.coc_json = {'from': "neoclide/coc-json", 
+			\ 'build': "yarn install --frozen-lockfile"}
+
+" YAML language server extension for CoC
+let plug.coc_yaml = {'from': "neoclide/coc-yaml", 
+			\ 'build': "yarn install --frozen-lockfile"}
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :

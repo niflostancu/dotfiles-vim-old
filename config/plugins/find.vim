@@ -108,7 +108,7 @@ function! plug.denite.hook_source() dict
 		" Setup ignore patterns in your .agignore file!
 		" https://github.com/ggreer/the_silver_searcher/wiki/Advanced-Usage
 		call denite#custom#var('grep', 'default_opts',
-					\ ['--ignore', '.tags', '-i', '--vimgrep', '--hidden'])
+					\ ['--ignore', '.tags', "--skip-vcs-ignores", '-i', '--vimgrep', '--hidden'])
 		call denite#custom#var('grep', 'recursive_opts', [])
 		call denite#custom#var('grep', 'pattern_opt', [])
 		call denite#custom#var('grep', 'separator', ['--'])

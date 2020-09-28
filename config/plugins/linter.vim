@@ -1,20 +1,7 @@
 " Generic make plugins
 let plug = vimconf#plugin#register("make")
 
-" Neomake (disabled)
-let plug.neomake = {'from': "neomake/neomake", "on_cmd": "Neomake", "if": 0}
-function plug.neomake.hook_source() dict
-	call neomake#configure#automake({
-		\  "BufWritePost": {"delay": 0}
-		\ })
-
-	let g:neomake_echo_current_error = 0
-	let g:neomake_open_list = 0
-	let g:neomake_verbose = 0
-
-endfunction
-
-" Asynchronous Lint Engine
+" Asynchronous Lint Engine (disabled)
 let plug.ale = {'from': "w0rp/ale", "if": 0}
 function plug.ale.hook_add() dict
 	let g:ale_sign_error = '✖'
@@ -42,7 +29,6 @@ endfunction
 
 " Conqueror of Completion
 let plug.coc = {'from': 'neoclide/coc.nvim', 'merged':0, 'rev': 'release'}
-
 function plug.coc.hook_add() dict
 	" Use tab for trigger completion with characters ahead and navigate.
 	inoremap <silent><expr> <TAB>

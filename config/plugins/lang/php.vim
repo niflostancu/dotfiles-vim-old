@@ -6,8 +6,9 @@ let plug.php = {'from': "StanAngeloff/php.vim"}
 " PHP indentation script
 let plug.php_indent = {'from': "2072/PHP-Indenting-for-VIm"}
 
-" PHP completion daemon
-let plug.php_complete = {'from': "lvht/phpcd.vim", "on_ft": "php",
-			\ "build": "composer install"}
+" PHP language server extension for CoC
+let plug.coc_php = {'from': "phpactor/coc-phpactor",
+			\ 'build': "yarn install --frozen-lockfile"}
+" alternate: "marlonfan/coc-phpls"
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :

@@ -10,6 +10,14 @@ function! plug.html5.hook_add() dict
 	let g:html5_aria_attributes_complete = 0
 endfunction
 
+" HTML language server extension for CoC
+let plug.coc_html = {'from': "neoclide/coc-html", 
+			\ 'build': "yarn install --frozen-lockfile"}
+
+" SVG language server extension for CoC
+let plug.coc_svg = {'from': "iamcco/coc-svg", 
+			\ 'build': "yarn install --frozen-lockfile"}
+
 " HTML addons
 let plug.jinja = {'from': "mitsuhiko/vim-jinja", "on_ft": ["htmljinja", "jinja"]}
 let plug.mustache = {'from': "mustache/vim-mustache-handlebars", "on_ft": ["html"]}

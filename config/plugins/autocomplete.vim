@@ -4,7 +4,7 @@ let plug = vimconf#plugin#register("autocomplete")
 " Context file type library
 let plug.context_filetype = {'from': "Shougo/context_filetype.vim"}
 
-" Deoplete - asynchronous autocompletion
+" Deoplete - asynchronous autocompletion - disabled, using CoC (from linter.vim) instead
 let plug.deoplete = {'from': "Shougo/deoplete.nvim", "if": 0}
 
 function plug.deoplete.hook_done_update() dict
@@ -44,29 +44,11 @@ function! s:check_back_space() abort "{{{
 endfunction"}}}
 
 " Syntax keywords source for deoplete
-let plug.neco_syntax = {'from': "Shougo/neco-syntax"}
+" let plug.neco_syntax = {'from': "Shougo/neco-syntax"}
 
-" Code snippets
-let plug.neosnippet = {'from': "Shougo/neosnippet.vim", "depends": [
-			\ "neosnippet-snippets", "context_filetype.vim"], "on_event": "InsertCharPre", "on_ft": "snippet",
-			\ "hook_add": "let g:neosnippet#data_directory = $VIM_CACHE.'/snippets'"}
-let plug.snippets = {'from': "Shougo/neosnippet-snippets"}
-
-function plug.neosnippet.hook_source() dict
-	let g:neosnippet#enable_snipmate_compatibility = 1
-	let g:neosnippet#enable_completed_snippet = 1
-	let g:neosnippet#expand_word_boundary = 1
-	autocmd VimCfg InsertLeave * NeoSnippetClearMarkers
-endfunction
-
-" Echo function docs in cmd line
-let plug.echodoc = {'from': "Shougo/echodoc.vim"}
-function plug.echodoc.hook_add() dict
-	let g:echodoc#enable_at_startup = 1
-	let g:echodoc#type = 'floating'
-endfunction
-
-"let plug.float_preview = {'from': "ncm2/float-preview.nvim"}
+" Code snippets (CoC extension)
+let plug.coc_snippets = {'from': "neoclide/coc-snippets", 
+			\ 'build': "yarn install --frozen-lockfile"}
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
 

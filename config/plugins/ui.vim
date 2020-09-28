@@ -1,4 +1,4 @@
-" UI-related plugins (e.g. theme, status line etc.)
+" VIM UI-related plugins (e.g. theme, status line etc.)
 let plug = vimconf#plugin#register("ui")
 
 " Dein plugin manager UI :D 
@@ -88,5 +88,8 @@ function! plug.indentguides.hook_add() dict
 	let g:indent_guides_auto_colors = 0
 endfunction
 let g:indent_guides_enable_on_vim_startup = 1
+
+" Readline key bindings on vim cmdline (e.g., C-e, C-f)
+let plug.rsi = {'from': "tpope/vim-rsi"}
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
