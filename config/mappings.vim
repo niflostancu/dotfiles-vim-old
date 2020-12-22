@@ -57,4 +57,15 @@ autocmd VimCfg TabLeave * let g:lasttab = tabpagenr()
 Shortcut (tab) switch to last tab
   \ nnoremap <silent> <Leader>t  :exe "tabn " . g:lasttab<CR>
 
+" Go to tab by number
+noremap g1 1gt
+noremap g2 2gt
+noremap g3 3gt
+noremap g4 4gt
+noremap g5 5gt
+noremap g6 6gt
+noremap g7 7gt
+noremap g8 8gt
+noremap g9 9gt
+
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
