@@ -32,39 +32,20 @@ endfunction
 " Commenting plugin
 let plug.tcomment = {'from': "tomtom/tcomment_vim"}
 
-" Incremental search
-let plug.incsearch = {'from': "haya14busa/incsearch.vim", 
-			\ "on_map": {"n": '<Plug>(incsearch-'}}
+" Incremental search (new version)
+let plug.incsearch = {'from': "haya14busa/is.vim"}
 function plug.incsearch.hook_add() dict
-	let g:incsearch#auto_nohlsearch = 1
-	set hlsearch
-	map /  <Plug>(incsearch-forward)
-	map ?  <Plug>(incsearch-backward)
-	map g/ <Plug>(incsearch-stay)
-	map n  <Plug>(incsearch-nohl-n)
-	map N  <Plug>(incsearch-nohl-N)
-	map *  <Plug>(incsearch-nohl-*)
-	map #  <Plug>(incsearch-nohl-#)
-	map g* <Plug>(incsearch-nohl-g*)
-	map g# <Plug>(incsearch-nohl-g#)
-endfunction
-" Fuzzy incremental search
-let plug.fuzzyincsearch = {'from': "haya14busa/incsearch-fuzzy.vim",
-			\ "on_map": {"n": '<Plug>(incsearch-fuzzy'}}
-function plug.fuzzyincsearch.hook_add() dict
-	map z/ <Plug>(incsearch-fuzzyspell-/)
-	map z? <Plug>(incsearch-fuzzyspell-?)
-	map zg/ <Plug>(incsearch-fuzzyspell-stay)
+	let g:is#do_default_mappings = 1
 endfunction
 
 " Improved *asterisk (search current word)
-let plug.asterisk = {'from': "haya14busa/vim-asterisk",
-			\ "on_map": {"n": '<Plug>(asterisk-'}}
+let plug.asterisk = {'from': "haya14busa/vim-asterisk"}
 function plug.asterisk.hook_add() dict
-	map *   <Plug>(asterisk-*)
-	map #   <Plug>(asterisk-#)
-	map g*  <Plug>(asterisk-g*)
-	map g#  <Plug>(asterisk-g#)
+	map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
+	map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
+	map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
+	map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
+
 	map z*  <Plug>(asterisk-z*)
 	map gz* <Plug>(asterisk-gz*)
 	map z#  <Plug>(asterisk-z#)
