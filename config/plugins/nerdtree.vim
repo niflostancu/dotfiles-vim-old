@@ -1,7 +1,7 @@
 " UI: NerdTree configuration
 let plug = vimconf#plugin#register("nerdtree")
 
-let plug.nerdtree = {'from': "scrooloose/nerdtree", "on_map": {"n": "<Plug>"}, 
+let plug.nerdtree = {'from': "preservim/nerdtree", "on_map": {"n": "<Plug>"}, 
 			\ "on_cmd": "NERDTree"}
 let plug.nerdtree_git = {'from': "Xuyuanp/nerdtree-git-plugin", "on_source": "nerdtree"}
 
