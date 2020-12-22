@@ -104,15 +104,14 @@ function! plug.denite.hook_source() dict
 
 	if executable('ag')
 		" Ag command on grep source
-		call denite#custom#var('grep', 'command', ['ag'])
-		" Setup ignore patterns in your .agignore file!
-		" https://github.com/ggreer/the_silver_searcher/wiki/Advanced-Usage
-		call denite#custom#var('grep', 'default_opts',
-					\ ['--ignore', '.tags', "--skip-vcs-ignores", '-i', '--vimgrep', '--hidden'])
-		call denite#custom#var('grep', 'recursive_opts', [])
-		call denite#custom#var('grep', 'pattern_opt', [])
-		call denite#custom#var('grep', 'separator', ['--'])
-		call denite#custom#var('grep', 'final_opts', [])
+		call denite#custom#var('grep', {
+					\ 'command': ['ag'],
+					\ 'default_opts': ['--ignore', '.tags', '-i', '--vimgrep', '--hidden'],
+					\ 'recursive_opts': [],
+					\ 'pattern_opt': [],
+					\ 'separator': ['--'],
+					\ 'final_opts': [],
+					\ })
 
 		" Change file/rec command.
 		call denite#custom#var('file/rec', 'command',
