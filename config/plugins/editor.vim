@@ -4,12 +4,18 @@ let plug = vimconf#plugin#register("editor")
 " Smart file indent autodetection
 let plug.sleuth = {'from': "niflostancu/vim-sleuth"}
 function! plug.sleuth.hook_add() dict
-	let g:sleuth_automatic = 1
+	" We use our own custom detection to choose between editorconfig and
+	" sleuth
+	let g:sleuth_automatic = 0
 	let g:sleuth_hard_race = 1
 endfunction
 
 " Project .editorconfig detection
 let plug.editorconfig = {'from': "editorconfig/editorconfig-vim"}
+function! plug.editorconfig.hook_add() dict
+	" call Sleuth after EditorConfig
+	autocmd VimCfg BufNewFile,BufReadPost,BufFilePost * :Sleuth
+endfunction
 
 " Faster parenthesis matching
 let plug.parenmatch = {'from': "itchyny/vim-parenmatch"}
