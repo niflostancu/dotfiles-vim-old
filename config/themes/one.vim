@@ -15,20 +15,36 @@ function plug.theme_one.hook_add() dict
 		set termguicolors
 	endif
 
-	let g:parenmatch_highlight = 0
-
-	function! UserIndentGuidesColor()
+	function! UserCustomColors()
 		hi IndentGuidesOdd  guibg=#292f39 ctermbg=235
 		hi IndentGuidesEven guibg=#2c333d ctermbg=236
 
+		" Background colors for active vs inactive windows
+		hi ActiveWindow guibg=#282c34 ctermbg=16
+		hi InactiveWindow guibg=#2c323c ctermbg=16
+
 		hi! link ParenMatch MatchParen
 	endfunction
-	autocmd VimCfg VimEnter,Colorscheme * call UserIndentGuidesColor()
+	autocmd VimCfg VimEnter,Colorscheme * call UserCustomColors()
+
+	let g:parenmatch_highlight = 0
 
 	set background=dark
 	execute 'colorscheme one'
 
 	autocmd VimCfg VimEnter execute 'colorscheme one'
 
+	" Call method on window enter
+	augroup WindowManagement
+		autocmd!
+		autocmd WinEnter * call Handle_Win_Enter()
+	augroup END
+
+
+endfunction
+
+" Change highlight group of active/inactive windows
+function! Handle_Win_Enter()
+	setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
 endfunction
 
