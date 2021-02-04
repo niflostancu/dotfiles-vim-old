@@ -156,8 +156,8 @@ set noruler             " Disable default status ruler
 set winwidth=30         " Minimum width for active window
 set winheight=1         " Minimum height for active window
 set pumheight=15        " Pop-up menu's line height
-set helpheight=12       " Minimum help window height
-set previewheight=14    " Completion preview height
+set helpheight=20       " Minimum help window height
+set previewheight=12    " Completion preview height
 
 set noshowcmd           " Don't show command in status line
 set cmdheight=1         " Height of the command line

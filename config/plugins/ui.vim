@@ -92,4 +92,22 @@ let g:indent_guides_enable_on_vim_startup = 1
 " Readline key bindings on vim cmdline (e.g., C-e, C-f)
 let plug.rsi = {'from': "tpope/vim-rsi"}
 
+" Automatic window resizing plugins
+let plug.animate = {'from': 'camspiers/animate.vim'}
+" Temporarily disabled (neat idea but quite buggy)
+let plug.lens = {'from': 'camspiers/lens.vim', "if": 0}
+function! plug.lens.hook_add() dict
+	let g:lens#disabled_filetypes = ['nerdtree', 'fzf', 'help']
+	let g:lens#disabled_buftypes = ['nofile']
+	let g:lens#width_resize_max = 140
+	let g:lens#height_resize_max = 35
+endfunction
+
+let plug.goldenview = {'from': 'zhaocai/GoldenView.Vim'}
+function! plug.goldenview.hook_add() dict
+	let g:goldenview__enable_default_mapping = 1
+endfunction
+
+let plug.vimzoom = {'from': 'dhruvasagar/vim-zoom'}
+
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :

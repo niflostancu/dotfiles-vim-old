@@ -22,16 +22,17 @@ endfunction
 
 function plug.gina.hook_source() dict
 	" Gina Settings
-	call gina#custom#command#option('status', '--opener', &previewheight . 'split')
+	let l:gitbotsplit = "bo " . &previewheight . 'split'
+	call gina#custom#command#option('status', '--opener', l:gitbotsplit)
 	call gina#custom#command#option('status', '--group', 'short')
 	call gina#custom#command#option('diff', '--opener', 'wincmd k | edit')
 	call gina#custom#command#option('show', '--opener', 'wincmd k | edit')
 	call gina#custom#command#option('edit', '--opener', 'wincmd k | edit')
-	call gina#custom#command#option('commit', '--opener', &previewheight . 'split')
+	call gina#custom#command#option('commit', '--opener', l:gitbotsplit)
 	call gina#custom#command#option('commit', '--group', 'short')
-	call gina#custom#command#option('log', '--opener', &previewheight . 'split')
+	call gina#custom#command#option('log', '--opener', l:gitbotsplit)
 	call gina#custom#command#option('log', '--group', 'short2')
-	call gina#custom#command#option('stash list', '--opener', &previewheight . 'split')
+	call gina#custom#command#option('stash list', '--opener', l:gitbotsplit)
 	call gina#custom#command#option('stash list', '--group', 'short2')
 endfunction
 
