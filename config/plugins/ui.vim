@@ -26,8 +26,15 @@ function plug.airline.hook_add() dict
 	let g:airline#extensions#tabline#fnamemod = ':t'
   let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
+  let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+  let g:airline_symbols.linenr = ''
+  let g:airline_symbols.maxlinenr = ''
+
 	let g:airline_section_z = airline#section#create([
-				\ 'windowswap', 'obsession', '%3p%%',
 				\ 'linenr', 'maxlinenr', ':%c%V'])
 
 	let g:airline#extensions#hunks#enabled = 0
@@ -44,14 +51,14 @@ function plug.airline.hook_add() dict
   " or copy paste the following into your vimrc for shortform text
   let g:airline_mode_map = {
       \ '__': '-',
-      \ 'c': 'CHG',
-      \ 'i': 'INS', 'ic': 'INS', 'ix': 'INS',
+      \ 'c': 'C',
+      \ 'i': 'I', 'ic': 'I', 'ix': 'I',
       \ 'multi': 'MUL',
-      \ 'n': 'NORM', 'ni': 'NORM', 'no': 'NORM',
-      \ 'R': 'REPL', 'Rv': 'REPL',
+      \ 'n': 'N', 'ni': 'N', 'no': 'N',
+      \ 'R': 'R', 'Rv': 'REPL',
       \ 's': 'S', 'S': 'S', '': 'S',
       \ 't': 'T',
-      \ 'v': 'VIS', 'VIS': 'VIS', '': 'VIS',
+      \ 'v': 'V', 'V': 'V', '': 'V',
       \ }
 endfunction
 
