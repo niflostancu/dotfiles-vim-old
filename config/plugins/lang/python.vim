@@ -15,7 +15,7 @@ let plug.python_indent = {'from': "Vimjas/vim-python-pep8-indent", "on_ft": "pyt
 let plug.python_fold = {'from': "tmhedberg/SimpylFold", "on_ft": "python"}
 
 " Python language server extension for CoC
-let plug.coc_python = {'from': "neoclide/coc-python", 
+let plug.coc_python = {'from': "fannheyward/coc-pyright", 
 			\ 'build': "yarn install --frozen-lockfile"}
 
 " Extends the % motion
