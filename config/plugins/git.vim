@@ -52,4 +52,10 @@ let plug.gitgutter = {'from': "airblade/vim-gitgutter"}
 " GH Line - Open Github / Bitbucket / selfhosted git website
 let plug.gitghline = {'from': "ruanyl/vim-gh-line"}
 
+" Conflict Marker plugin
+let plug.conflict_marker = {'from': "rhysd/conflict-marker.vim"}
+function plug.conflict_marker.hook_add() dict
+	let g:conflict_marker_enable_mappings = 0
+endfunction
+
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
