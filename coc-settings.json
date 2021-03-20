@@ -1,0 +1,23 @@
+{
+    "python": {
+        "venvPath": ".",
+        "venv": ".venv"
+    },
+    "pyls": {
+        "plugins":
+        {
+            "pyls_mypy":
+            {
+                "enabled": true,
+                "live_mode": false
+            }
+        }
+    },
+
+    "latex.build.onSave": true,
+    "latex.build.outputDirectory": "out",
+    "latex.build.args": [],
+    "latex.forwardSearch.executable": "okular",
+    "latex.forwardSearch.args": ["--unique", "file:%p#src:%l%f"]
+}
+

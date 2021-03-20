@@ -33,7 +33,7 @@ endfunction
 " DokuWiki editor plugin
 let plug.dokuwiki = {'from': 'nblock/vim-dokuwiki'}
 
-" LaTeX FTW
+" VimTex
 " let plug.vimtex = {'from': 'lervag/vimtex', "on_ft": ["plaintex", "tex", "bib"]}
 " function! plug.vimtex.hook_add() dict
 " 	let g:vimtex_compiler_progname = 'nvr'
@@ -46,4 +46,3 @@ let plug.coc_latex = {'from': "fannheyward/coc-texlab",
 			\ 'build': "yarn install --frozen-lockfile"}
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
-
