@@ -7,6 +7,7 @@ function! vimconf#init()
 	let g:vimconf_cache_dir = expand(($XDG_CACHE_HOME ? $XDG_CACHE_HOME : '~/.cache').'/nvim')
 	" export as environment variable for ease of use
 	let $VIM_CACHE = g:vimconf_cache_dir
+	let g:dein#install_log_filename = g:vimconf_cache_dir . "/dein.log"
 
 	" AutoCmd group
 	augroup VimCfg
