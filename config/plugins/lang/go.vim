@@ -15,4 +15,6 @@ endfunction
 let plug.coc_go = {'from': "josa42/coc-go", 
 			\ 'build': "yarn install --frozen-lockfile"}
 
+let plug.helm_yaml = {'from': 'towolf/vim-helm'}
+
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
