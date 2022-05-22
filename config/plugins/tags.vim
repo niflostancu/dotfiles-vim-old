@@ -10,6 +10,9 @@ function plug.gutentags.hook_add() dict
 	let g:gutentags_project_root = [".tags", "Session.vim", ".git"]
 	let g:gutentags_add_default_project_roots = 1
 	let g:gutentags_ctags_tagfile = '.tags'
+	let g:gutentags_file_list_command = {
+				\   'markers': { '.git': 'git ls-files', },
+				\ }
 endfunction
 
 " Also see plugins/list.vim for FZF Tags key bindings
