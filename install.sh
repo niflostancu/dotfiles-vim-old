@@ -1,10 +1,10 @@
 #!/bin/bash
-# Zsh dotfiles installation script
+# NeoVim dotfiles installation script
 
 SRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 VIM_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/nvim/"
 
-if [[ -f "$ZDOTDIR/.zshrc" ]]; then
+if [[ -f "$VIM_CONFIG" ]]; then
   echo "A nvim configuration already exists in $VIM_CONFIG!"
   read -p "Are you sure you want to replace it? " -n 1 -r
   echo
