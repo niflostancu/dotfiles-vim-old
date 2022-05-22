@@ -14,10 +14,13 @@
         }
     },
 
-    "latex.build.onSave": true,
-    "latex.build.outputDirectory": "out",
-    "latex.build.args": [],
-    "latex.forwardSearch.executable": "okular",
-    "latex.forwardSearch.args": ["--unique", "file:%p#src:%l%f"]
+    "texlab.rootDirectory": null,
+    "texlab.auxDirectory": "out/",
+    "texlab.build.args": [
+        "-pvc"
+    ],
+    "texlab.build.onSave": false,
+    "texlab.forwardSearch.executable": "okular",
+    "texlab.forwardSearch.args": ["--unique", "file:%p#src:%l%f"]
 }
 
