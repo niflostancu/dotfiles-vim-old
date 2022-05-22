@@ -10,6 +10,8 @@ function! plug.html5.hook_add() dict
 	let g:html5_aria_attributes_complete = 0
 endfunction
 
+let plug.matchtag = {'from': 'leafOfTree/vim-matchtag', 'on_ft': "html"}
+
 " HTML language server extension for CoC
 let plug.coc_html = {'from': "neoclide/coc-html", 
 			\ 'build': "yarn install --frozen-lockfile"}
