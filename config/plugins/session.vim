@@ -28,6 +28,7 @@ function s:save_session_extended()
 			let l:NERDTree = s:NERDTree_getTreeForTab(i)
 			if !empty(l:NERDTree)
 				let l:code = [
+						\ "if exists(':NERDTree')",
 						\ "tabnext " . string(i),
 						\ "NERDTree \"" .
 						\ 	escape(l:NERDTree.root.path.str(), '\"') . "\""
@@ -38,6 +39,7 @@ function s:save_session_extended()
 						\ escape(p, '\"') . "\"), { \"open\": 1 })")
 				endfor
 				call add(l:code, "call b:NERDTree.render()")
+				call add(l:code, "endif")
 				call extend(l:body, l:code, -3)
 			endif
 		catch
