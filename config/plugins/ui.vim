@@ -99,18 +99,21 @@ let plug.rsi = {'from': "tpope/vim-rsi"}
 " Automatic window resizing plugins
 let plug.animate = {'from': 'camspiers/animate.vim'}
 " Temporarily disabled (neat idea but quite buggy)
-let plug.lens = {'from': 'camspiers/lens.vim', "if": 0}
+let plug.lens = {'from': 'camspiers/lens.vim'}
 function! plug.lens.hook_add() dict
 	let g:lens#disabled_filetypes = ['nerdtree', 'fzf', 'help']
 	let g:lens#disabled_buftypes = ['nofile']
 	let g:lens#width_resize_max = 140
 	let g:lens#height_resize_max = 35
+	let g:lens#animate = 0
 endfunction
 
-let plug.goldenview = {'from': 'zhaocai/GoldenView.Vim'}
-function! plug.goldenview.hook_add() dict
-	let g:goldenview__enable_default_mapping = 1
-endfunction
+if 0
+	let plug.goldenview = {'from': 'zhaocai/GoldenView.Vim'}
+	function! plug.goldenview.hook_add() dict
+		let g:goldenview__enable_default_mapping = 1
+	endfunction
+endif
 
 let plug.vimzoom = {'from': 'dhruvasagar/vim-zoom'}
 
