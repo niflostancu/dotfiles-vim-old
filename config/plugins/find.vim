@@ -168,7 +168,6 @@ endfunction
 function! s:custom_denite_filter_settings() abort
 	" Window options
 	setlocal signcolumn=yes nocursorline nonumber norelativenumber
-	call deoplete#custom#buffer_option('auto_complete', v:false)
 
 	" Key mappings
 	nnoremap <silent><buffer><expr> <Esc>  denite#do_map('quit')

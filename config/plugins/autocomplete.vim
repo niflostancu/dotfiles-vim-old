@@ -5,15 +5,16 @@ let plug = vimconf#plugin#register("autocomplete")
 let plug.context_filetype = {'from': "Shougo/context_filetype.vim"}
 
 " Deoplete - asynchronous autocompletion - disabled, using CoC (from linter.vim) instead
-let plug.deoplete = {'from': "Shougo/deoplete.nvim", "if": 0}
+let plug.deoplete = {'from': "Shougo/deoplete.nvim", "if": '0'}
 
 function plug.deoplete.hook_done_update() dict
 	call dein#remote_plugins()
 endfunction
 
 function plug.deoplete.hook_add() dict
-	let g:deoplete#enable_at_startup = 1
+	if ! dein#tap('deoplete') | return | endif
 
+	let g:deoplete#enable_at_startup = 1
 	" Deoplete settings
 	call deoplete#custom#option('ignore_sources', {})
 
