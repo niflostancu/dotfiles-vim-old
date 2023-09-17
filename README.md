@@ -2,6 +2,14 @@
 
 My personal NeoVim config scripts, for use as my main IDE.
 
+| :warning: WARNING          |
+|:---------------------------|
+| This repository is deprecated! |
+| Please check out my newer
+[dotfiles-lvim](https://github.com/niflostancu/dotfiles-lvim) (LunarVim / LUA-based config framework) instead. |
+
+## Old NeoVim config
+
 Inspired from [rafi's vim config](https://github.com/rafi/vim-config),
 [SpaceVim](https://spacevim.org) and many others.
 
